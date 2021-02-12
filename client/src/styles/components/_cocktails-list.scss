@@ -1,0 +1,66 @@
+.cocktails__list {
+  background-color: $color-grey-light;
+  list-style: none;
+  // width: 25%;
+  flex: 0 25%;
+
+  @include slideInFromSide;
+
+  &-item {
+    position: relative;
+    transition: all 0.3s;
+    &:nth-child(odd) {
+      background-color: $color-white;
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-grey-light-1;
+    }
+    &-link,
+    &-link:link,
+    &-link:focus,
+    &-link:active,
+    &-link:visited {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      padding: 0.5rem 0;
+      font-family: inherit;
+      color: $color-primary-dark;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.7s;
+      border: none;
+      outline: none;
+      width: 100%;
+      cursor: pointer;
+      background: none;
+      &:hover {
+        transform: scaleX(1.01);
+        color: $color-grey-light-1;
+        background-image: linear-gradient(
+          to bottom right,
+          $color-primary-dark,
+          $color-primary-secondary
+        );
+        @include respond(tab-port) {
+          transform: scaleX(1.01);
+        }
+        @include respond(phone) {
+          transform: translateY(-1px);
+        }
+      }
+    }
+
+    &-image {
+      width: 6rem;
+      border-radius: $border-radius-small;
+      padding-right: 0.5rem;
+    }
+    &-name {
+      padding-left: 0.5rem;
+    }
+  }
+  &-pagination{
+    
+  }
+}

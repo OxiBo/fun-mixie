@@ -1,0 +1,40 @@
+.icon {
+  // margin: 1rem;
+  width: 3rem;
+  height: 3rem;
+  fill: $color-white;
+}
+
+.icon-facebook {
+  margin-right: 1rem;
+}
+
+.icon-instagram {
+  margin-right: 1rem;
+}
+
+.icon-twitter {
+  margin-right: 1rem;
+}
+
+.icon-options {
+  // margin: 0;
+  width: 2rem;
+  height: 2rem;
+  background-color: $color-primary;
+  @include respond(phone) {
+    background-color: inherit;
+    fill: $color-primary-light;
+  }
+}
+
+.icon-drink,
+.icon-drink1 {
+  fill: inherit;
+}
+
+.icon-next, .icon-prev{
+  width: 2rem;
+  height: 2rem;
+  fill: $color-white;
+}

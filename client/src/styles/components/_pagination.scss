@@ -1,0 +1,51 @@
+.pagination {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+//   & > * {
+//    flex: 1;
+//   }
+  @include respond(tab-port) {
+    justify-content: center;
+    & > * {
+      margin: 0 1rem;
+      
+    }
+  }
+
+//   @include respond(tab-land) {
+//     justify-content: center;
+//     & > * {
+//       margin: 0 1rem;
+//     }
+//   }
+
+  &__text {
+    font-weight: 600;
+    text-align: center;
+    flex: 0 5rem;
+  }
+  &__button {
+  }
+  &__button:disabled {
+    filter: grayscale(70%);
+  }
+  &__button:hover:disabled {
+    box-shadow: $box-shadow-small;
+  }
+  &__button-prev {
+  }
+  &__button-next {
+    background-image: linear-gradient(
+      to left,
+      $color-primary-secondary,
+      $color-primary-light
+    );
+  }
+  &__icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0.2rem;
+  }
+}

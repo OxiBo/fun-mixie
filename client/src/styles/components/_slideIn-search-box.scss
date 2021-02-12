@@ -1,0 +1,111 @@
+.slideIn-search-box {
+  flex: 0 0 95%;
+  min-height: 7rem;
+  display: flex;
+  justify-content: center;
+  margin-top: .5rem;
+  
+  @include respond(phone) {
+    flex: 1;
+  }
+  &-body {
+    flex: 0 0 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -1rem;
+    padding-top: 2rem;
+    border: none;
+    background-color: $color-white;
+    border-bottom-left-radius: 23px;
+    border-bottom-right-radius: 23px;
+    box-shadow: $box-shadow-medium;
+    font-size: 1.3rem;
+    color: $color-primary;
+    @include respond(phone) {
+      flex: 1 100%;
+      border-radius: 0;
+      background-color: $color-grey-light;
+      box-shadow: none;
+    }
+    &-suggestions {
+      flex: 0 0 85%;
+      overflow: hidden;
+      background-color: rgba($color-white, 0.95);
+      @include respond(phone) {
+        flex: 1 100%;
+      }
+      &-list {
+        // margin: 0 0 0 0;
+        padding: 1rem 0rem;
+        width: 100%;
+        list-style: none;
+        // max-height: 20rem;
+        // overflow: scroll;
+        @include respond(phone) {
+          margin: 0;
+          padding: 0 0 1rem 0;
+        }
+      }
+      &-list-item {
+        cursor: pointer;
+        padding: 0.2rem 1.5rem;
+        transition: all 0.3s;
+        &:hover {
+          background-color: $color-grey-light;
+          padding-left: 1.7rem;
+          letter-spacing: 0.7px;
+        }
+      }
+    }
+
+    // &-suggestions-list{
+    //   list-style: none;
+    //   background-color: green;
+    // }
+  }
+
+  &-description {
+    flex: 0 0 35%;
+    padding: 1rem;
+    text-align: right;
+  }
+  &-radio {
+    padding: 1rem;
+    font-weight: 600;
+  }
+  &-input {
+    display: none;
+  }
+  &-button {
+    display: inline-block;
+    height: 1.4rem;
+    width: 1.4rem;
+    border-radius: 50%;
+    border: 1px solid $color-primary-dark;
+    position: relative;
+    margin-right: 0.3rem;
+    &:before {
+      content: "";
+      display: block;
+      height: 0.9rem;
+      width: 0.9rem;
+      background-color: $color-primary;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+  &-input:checked ~ &-label &-button::before {
+    opacity: 1;
+  }
+}
+
+// .slideIn-search-box-body-suggestions-list{
+//   list-style: none;
+//   background-color: mediumslateblue;
+// }

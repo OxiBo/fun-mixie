@@ -1,0 +1,29 @@
+.button-clear,
+.button-clear:focus,
+.button-clear:visited {
+    display: block;
+  width: 12rem;
+  height: 3rem;
+  margin: 1rem auto;
+  border: none;
+  border-radius: $border-radius-big;
+  color: $color-white;
+  outline: none;
+  background-image: linear-gradient(
+    to left,
+    $color-primary,
+    $color-primary-secondary
+  );
+  box-shadow: $box-shadow-medium;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.3s;
+
+  &:hover{
+    box-shadow: $box-shadow-small; 
+  }
+  &:active {
+    transform: translateY(3px);
+    box-shadow: $box-shadow-tiny;
+  }
+}

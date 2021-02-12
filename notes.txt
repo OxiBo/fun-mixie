@@ -1,0 +1,4 @@
+facebook login - https://medium.com/@hammed.roh/creating-passportjs-facebookstrategy-on-localhost-https-1993870e0271
+
+facebook API - https://developers.facebook.com/docs/facebook-login/security/#surfacearea
+

@@ -1,0 +1,18 @@
+.footer {
+  //   height: 10rem;
+  flex: 0 0 7rem;
+  color: $color-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  &__link,
+  &___link:active,
+  &___link:visited {
+    text-decoration: none;
+    color: inherit;
+    
+    font-weight: 600;
+    padding-left: .5rem;
+  }
+}

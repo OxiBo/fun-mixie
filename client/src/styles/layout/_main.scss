@@ -1,0 +1,30 @@
+.main {
+  // border-top: 2px solid $color-grey-light;
+  min-height: 90vh;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  //   justify-content: center;
+  //   align-items: center;
+  position: relative;
+ 
+  @include respond(tab-land) {
+    width: 90%;
+  }
+  @include respond(tab-port) {
+    width: 95%;
+  }
+  @media only screen and (max-width: 51.25em) {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+
+    & > * {
+      flex: 1 100%;
+    }
+  }
+
+  @include respond(phone) {
+    width: 100%;
+  }
+}

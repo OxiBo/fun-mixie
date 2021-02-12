@@ -1,0 +1,15 @@
+.container {
+  min-height: 100vh;
+
+  color: $color-primary;
+  background-image: linear-gradient(
+    to bottom right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+  background-repeat: no-repeat;
+  box-sizing: cover;
+  display: flex;
+  flex-direction: column;
+
+}

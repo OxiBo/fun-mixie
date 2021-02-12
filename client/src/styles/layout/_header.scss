@@ -1,0 +1,163 @@
+.header {
+  height: 7rem;
+  // max-width: 90rem;
+  margin: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background: yellow;
+
+  @include respond(phone) {
+    flex-wrap: wrap;
+    height: auto;
+    align-content: stretch;
+    margin: 0;
+    border-bottom: none;
+  }
+  &__search {
+    margin: 0 1.5rem;
+    flex: 0 0 40%;
+    position: relative;
+    > * {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    @include respond(phone) {
+      flex: 0 100%;
+      order: 1;
+      margin: 0rem 0rem;
+      padding: 1rem 2rem;
+      background-color: $color-grey-light;
+    }
+    &-1 {
+      // flex: 0 0 45%;
+
+      // display: flex;
+      // align-items: center;
+      justify-content: space-between;
+
+      &-options-float-span {
+        opacity: 0;
+        position: absolute;
+        padding: 0.3rem;
+        top: 2.3rem;
+        left: -2rem;
+        background-color: $color-white;
+        border-radius: 2px;
+        font-size: 0.7rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        width: 7rem;
+        transition: all 0.4s;
+        @include respond(phone) {
+          left: -4rem;
+        }
+      }
+
+      &-options,
+      &-options:link,
+      &-options:visited {
+        // margin-left: -2rem;
+        flex: 0 2rem;
+        outline: none;
+        transition: all 0.2s;
+        cursor: pointer;
+        z-index: 200; // in order to prevent sliding form to cover the button
+        position: relative;
+      }
+
+      &-options:hover {
+        transform: scale(1.2);
+      }
+
+      &-options:active {
+        transform: translateY(3px);
+      }
+
+      .icon-options:hover + span {
+        opacity: 1;
+        z-index: 100;
+      }
+      &-options:active span:nth-of-type(1) {
+        display: none;
+      }
+      &__button {
+        border: none;
+        height: 100%;
+        background-color: $color-grey-light;
+
+        &:focus {
+          outline: none;
+        }
+        &:active {
+          transform: translateY(2px);
+        }
+      }
+      &__input:focus + &__button {
+        background-color: $color-white;
+      }
+      &__input:focus::-webkit-input-placeholder {
+        font-size: 1.2rem;
+        opacity: 0.8;
+      }
+      &__icon {
+        width: 2rem;
+        height: 2rem;
+        fill: inherit;
+      }
+    }
+    &-2 {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: 2.2rem;
+      left: 0;
+      z-index: 5;
+      transform: translateY(-2rem);
+      justify-content: space-between;
+      transition: all 0.5s;
+      @include respond(phone) {
+        top: 4.2rem;
+      }
+      .extra-space {
+        flex: 0 3rem;
+        @include respond(phone) {
+          flex: 0 0rem;
+        }
+      }
+    }
+  }
+
+  .brand {
+    font-size: 3rem;
+    letter-spacing: 1.9px;
+    align-self: stretch;
+    display: flex;
+    align-items: stretch;
+    // margin-left: 3rem;
+    &__link {
+      text-decoration: none;
+      color: $color-white;
+      text-transform: uppercase;
+      letter-spacing: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.4s;
+    }
+    &__link:hover {
+      background-image: linear-gradient(
+        to top,
+        $color-grey-light-1,
+        $color-primary-secondary
+      );
+      background-clip: text;
+      color: transparent;
+    }
+    @include respond(phone) {
+      margin-right: auto;
+      margin-left: 2rem;
+    }
+  }
+}

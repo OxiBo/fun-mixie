@@ -1,0 +1,25 @@
+.u-margin-top-bottom-big {
+  margin-top: 5rem !important;
+  margin-bottom: 5rem !important;
+}
+
+.slideIn {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.hr-solid {
+  height: 3px;
+  color: $color-white;
+  width: 100%;
+  background-color: $color-white;
+  @include respond(phone) {
+    display: none;
+  }
+}
+.emptyFieldError {
+  border: 2px solid $color-primary-secondary !important;
+}
+
+
