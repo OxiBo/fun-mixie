@@ -41,6 +41,16 @@ const userSchema = new Schema({
     name: String,
     token: String,
   },
+  // cocktails: [String], //   cocktailId: String,
+
+  cocktails: [
+    {
+      _id: { type: Schema.Types.ObjectId, ref: "Cocktail" },
+      apiId: String,
+    },
+  ],
+  // cocktailId: String, // use this field for quick check if the cocktail has been added to favorites
+
   createdAt: { type: Date, default: Date.now() },
 });
 

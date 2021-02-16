@@ -8,9 +8,9 @@ export const parseCocktailInfo = ({
   ...data
 }) => {
   let recipe = {
-    id: idDrink,
+    apiId: idDrink,
     name: strDrink,
-    alcoholic: strAlcoholic,
+    alcoholic: strAlcoholic === "Alcoholic" ? true : false,
     glass: strGlass,
     instructions: strInstructions,
     image: strDrinkThumb,

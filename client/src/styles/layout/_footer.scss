@@ -11,8 +11,10 @@
   &___link:visited {
     text-decoration: none;
     color: inherit;
-    
     font-weight: 600;
     padding-left: .5rem;
+  }
+  &__copyright{
+    text-align: center;
   }
 }

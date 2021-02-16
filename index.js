@@ -8,9 +8,8 @@ const express = require("express"),
   path = require("path"),
   keys = require("./config/keys"),
   authRoutes = require("./routes/auth"),
-  
   app = express();
-  
+
 // have to require the model before requiring passport
 // require("./models/User");
 // register model
@@ -32,8 +31,6 @@ app.use(
   })
 );
 
-
-
 // database configuration
 try {
   mongoose.connect(keys.mongoURI, {
@@ -45,6 +42,7 @@ try {
 } catch (err) {
   console.log("ERROR:", err.message);
 }
+
 
 app.use(passport.initialize()); // has to be before requiring auth routes
 app.use(passport.session()); // has to be before requiring auth routes
@@ -68,7 +66,8 @@ passport.deserializeUser((id, done) => {
   }
 });
 app.use(authRoutes);
-
+const cocktailsRoutes = require("./routes/cocktails");
+app.use(cocktailsRoutes);
 // app.get("/test", (req, res) => {
 //   res.send("Redirected");
 // });

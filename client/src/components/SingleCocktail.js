@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 // svg icons
 import sprite from "../styles/img/sprite.svg";
 import Spinner from "./Spinner";
-
+import Liked from "./Liked";
 import { searchIngredient } from "../actions";
 import {
   selectSingleCocktail,
@@ -27,7 +27,7 @@ const SingleCocktail = () => {
 
   const renderCocktailInfo = () => {
     const {
-      id,
+      apiId,
       name,
       alcoholic,
       instructions,
@@ -47,7 +47,7 @@ const SingleCocktail = () => {
             <span className="cocktail__details-figure-name">{name} </span>
           </figcaption>
           <div className="cocktail__details-figure-alcoholic">
-            {alcoholic.toLowerCase() === "alcoholic" ? (
+            {alcoholic ? (
               <svg className="cocktail__details-figure-alcoholic-icon icon icon-drink">
                 <use href={sprite + "#icon-drink1"} />
               </svg>
@@ -57,9 +57,10 @@ const SingleCocktail = () => {
               </svg>
             )}
             <p className="cocktail__details-figure-alcoholic-text">
-              {alcoholic}
+              {alcoholic ? "Alcoholic" : "Non-Alcoholic"}
             </p>
           </div>
+          <Liked apiId={apiId} data={data}/>
         </figure>
 
         <div className="cocktail__details-figure-ingredients">
@@ -80,7 +81,9 @@ const SingleCocktail = () => {
                   {" "}
                   {item.measure}
                   <span
-                    onClick={() => dispatch(searchIngredient(item.ingredient || item))}
+                    onClick={() =>
+                      dispatch(searchIngredient(item.ingredient || item))
+                    }
                     className="cocktail__details-figure-ingredients-item-ingredient"
                   >
                     {" "}

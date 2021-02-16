@@ -28,6 +28,10 @@
       box-shadow: $box-shadow-medium;
       object-fit: cover;
       transform: scale(1.01);
+      @include respond(phone){
+        max-width: 30rem;
+        max-height: 30rem;
+      }
     }
     &-caption {
       // flex: 0 70%;

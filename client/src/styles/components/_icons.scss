@@ -33,8 +33,42 @@
   fill: inherit;
 }
 
-.icon-next, .icon-prev{
+.icon-next,
+.icon-prev {
   width: 2rem;
   height: 2rem;
   fill: $color-white;
+}
+
+.icon-heart {
+  transition: all 0.4s;
+}
+
+.icon-heart:active {
+  transform: translateY(2px);
+}
+.icon-heart-full {
+  fill: url(#heart-full-gradient);
+}
+
+// .icon-heart-empty {
+//   fill: url(#heart-empty-gradient);
+// }
+
+
+
+.from-white {
+  stop-color:$color-white;
+}
+
+.to-grey{
+  stop-color:$color-grey-dark;
+}
+
+// full heart (liked)
+.from-light {
+  stop-color: $color-primary-secondary;
+}
+.to-dark {
+  stop-color: $color-primary;
 }

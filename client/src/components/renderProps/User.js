@@ -7,15 +7,14 @@ import { fetchUser } from "../../actions";
 // const User = ({ user, error, children, fetchUser }) => {
 const User = ({ children }) => {
   const dispatch = useDispatch();
-  const { user, authError } = useSelector((state) => { 
-    return state.auth});
+  const { user, authError } = useSelector((state) => {
+    return state.auth;
+  });
 
   useEffect(() => {
     dispatch(fetchUser());
-    
-  }, [ dispatch ]);
-
-
+  }, [dispatch]);
+  // console.log(user);
   // return <>{children({ user, error })}</>;
   return <>{children({ user, authError })}</>;
 };

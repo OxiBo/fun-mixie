@@ -17,6 +17,7 @@ import {
   COCKTAILS_SEARCH_ERROR,
   POPULATE_AUTOCOMPLETE,
   AUTOCOMPLETE_EMPTY,
+  LIKE_COCKTAIL,
 } from "./types";
 
 export const fetchUser = () => async (dispatch) => {
@@ -155,4 +156,12 @@ export const searchCocktails = (
   }
 };
 
-export const fetchCocktailsList = () => async (dispatch) => {};
+export const likeCocktail = (apiId, data) => async (dispatch) => {
+  try {
+    const res = await axios.post(`/api/like/`, { apiId, data });
+    dispatch({ type: FETCH_USER, payload: res.data });
+    // console.log(res.data)
+  } catch (err) {
+    console.log(err);
+  }
+};

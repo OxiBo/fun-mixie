@@ -4,6 +4,7 @@ const express = require("express"),
 router.get("/api/user", async (req, res) => {
   //   console.log(req.session);
   // console.log(req.headers.host);
+  // console.log(req.user)
   res.send(req.user);
   
 });
