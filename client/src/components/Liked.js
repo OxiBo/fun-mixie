@@ -18,10 +18,9 @@ const Liked = ({ apiId, data }) => {
           const liked = user.cocktails.find(
             (cocktail) => cocktail.apiId === apiId
           );
-          console.log(liked);
           return (
             <div
-              onClick={() => dispatch(likeCocktail(apiId, data))}
+              onClick={() => dispatch(likeCocktail(apiId, liked || data))}
               className="cocktail__details-figure-liked"
             >
               <svg className="cocktail__details-figure-liked-item-icon icon icon-heart icon-heart-full">

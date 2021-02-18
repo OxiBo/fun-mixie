@@ -9,6 +9,8 @@ import {
   COCKTAILS_SEARCH_ERROR,
   POPULATE_AUTOCOMPLETE,
   AUTOCOMPLETE_EMPTY,
+  FETCH_FAVE_COCKTAILS,
+  FETCH_FAVE_COCKTAILS_ERROR,
 } from "../actions/types";
 
 const defaultAuthState = {
@@ -16,6 +18,8 @@ const defaultAuthState = {
   singleCocktailError: false,
   cocktailsList: [],
   cocktailsSearchError: false,
+  faveCocktails: [],
+  faveCocktailsError: false,
   typeAhead: [],
   typeAheadEmpty: false,
   ingredient: {},
@@ -46,6 +50,18 @@ const cocktailsReducer = (state = defaultAuthState, action) => {
       return {
         ...state,
         cocktailsSearchError: action.payload,
+        // ????
+      };
+    case FETCH_FAVE_COCKTAILS:
+      return {
+        ...state,
+        faveCocktailsError: false,
+        faveCocktails: action.payload || [], // ???
+      };
+    case FETCH_FAVE_COCKTAILS_ERROR:
+      return {
+        ...state,
+        faveCocktailsError: action.payload,
         // ????
       };
     case CLEAR_COCKTAILS_LIST:

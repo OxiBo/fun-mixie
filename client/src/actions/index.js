@@ -17,7 +17,8 @@ import {
   COCKTAILS_SEARCH_ERROR,
   POPULATE_AUTOCOMPLETE,
   AUTOCOMPLETE_EMPTY,
-  LIKE_COCKTAIL,
+  FETCH_FAVE_COCKTAILS,
+  FETCH_FAVE_COCKTAILS_ERROR,
 } from "./types";
 
 export const fetchUser = () => async (dispatch) => {
@@ -163,5 +164,21 @@ export const likeCocktail = (apiId, data) => async (dispatch) => {
     // console.log(res.data)
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const fetchFavoriteCocktails = (
+  currentPage,
+  perPageFaveCocktails
+) => async (dispatch) => {
+  try {
+    const { data } = await axios.get(
+      `/api/user-cocktails/?page=${currentPage}&size=${perPageFaveCocktails}`
+    );
+    const { total, paginated } = data;
+    dispatch({ type: FETCH_FAVE_COCKTAILS, payload: { total, paginated } });
+  } catch (err) {
+    console.log(err);
+    dispatch({ type: FETCH_FAVE_COCKTAILS_ERROR, payload: err.message });
   }
 };

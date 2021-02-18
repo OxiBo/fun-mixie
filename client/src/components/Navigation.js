@@ -36,7 +36,7 @@ const Navigation = () => {
                   </li>
 
                   <li className="nav-bar__list-item">
-                    <Link to="" className="nav-bar__list-link">
+                    <Link to={`/cocktails`} className="nav-bar__list-link">
                       <svg className="nav-bar__list-icon icon-heart-full">
                         <use href={sprite + "#icon-heart1"}></use>
                       </svg>

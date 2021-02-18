@@ -14,6 +14,7 @@ import reducer from "./reducers";
 import App from "./components/App";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
+import FavoriteCocktails from "./components/FavoriteCocktails";
 
 
 // styles
@@ -31,7 +32,7 @@ ReactDOM.render(
           <App>
             <Route exact path="/" component={Home} />
             <Route exact path="/signin" component={SignIn} />
-          
+            <Route exact path="/cocktails" component={FavoriteCocktails} />
           </App>
         </Switch>
       </BrowserRouter>

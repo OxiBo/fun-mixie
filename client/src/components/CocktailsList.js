@@ -62,14 +62,16 @@ const CocktailsList = () => {
         ) : data.length > 0 ? (
           <>
             {renderCocktailList(data)}
-            <div className="cocktails__list-pagination">
-              <Pagination
-                perPage={perPage}
-                total={data.length}
-                onPageChange={onPageChange}
-              />
-            </div>
-            
+            {data.length > perPage && (
+              <div className="cocktails__list-pagination">
+                <Pagination
+                  perPage={perPage}
+                  total={data.length}
+                  onPageChange={onPageChange}
+                />
+              </div>
+            )}
+
             <ButtonClear action={clearCocktailsList} />
           </>
         ) : (

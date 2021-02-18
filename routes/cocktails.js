@@ -1,3 +1,5 @@
+const { route } = require("./auth");
+
 const express = require("express"),
   mongoose = require("mongoose"),
   User = require("../models/User"),
@@ -43,6 +45,52 @@ router.post("/api/like", async (req, res) => {
     }
 
     res.send(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error");
+  }
+});
+
+router.get("/api/user-cocktails", async (req, res) => {
+  const { page, size } = req.query;
+  const startIndex = size * page;
+  try {
+    const result = await User.aggregate([
+      { $match: { _id: req.user._id } },
+
+      {
+        $project: {
+          total: { $size: "$cocktails" },
+          sliced: {
+            $slice: ["$cocktails", startIndex, +size],
+          }, // https://docs.mongodb.com/manual/reference/operator/aggregation/slice/
+          // {
+        },
+      },
+      {
+        $lookup: {
+          from: "cocktails",
+          localField: "sliced._id",
+          foreignField: "_id",
+          as: "paginated",
+        },
+      },
+      // {
+      //   $project: {
+      //     total: { $size: "$cocktails" },
+      //     portion: {
+      //       $slice: ["$cocktails", 0, 2],
+
+      //     }, // https://docs.mongodb.com/manual/reference/operator/aggregation/slice/
+      //     // {
+      //   },
+
+      // },
+    ]);
+    // console.log(t[0]);
+    const [{ total, paginated }] = result;
+
+    res.send({ total, paginated });
   } catch (err) {
     console.log(err);
     res.status(500).send("Server error");
