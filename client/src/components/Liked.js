@@ -15,15 +15,17 @@ const Liked = ({ apiId, data }) => {
 
         // svg gradient - https://fvsch.com/svg-gradient-fill
         if (user) {
-          const liked = user.cocktails.find(
+          const liked = user.cocktails.findIndex(
             (cocktail) => cocktail.apiId === apiId
-          );
+          ) < 0 ? false : true;
+         
+          console.log(liked);
           return (
             <div
               onClick={() => dispatch(likeCocktail(apiId, liked || data))}
-              className="cocktail__details-figure-liked"
+              className="liked"
             >
-              <svg className="cocktail__details-figure-liked-item-icon icon icon-heart icon-heart-full">
+              <svg className="liked-item-icon icon icon-heart icon-heart-full">
                 <use href={sprite + "#icon-heart1"} />
                 <linearGradient id="heart-full-gradient" x2="1" y2="1">
                   <stop

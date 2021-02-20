@@ -60,7 +60,10 @@ const SingleCocktail = () => {
               {alcoholic ? "Alcoholic" : "Non-Alcoholic"}
             </p>
           </div>
-          <Liked apiId={apiId} data={data}/>
+          <div className="cocktail__details-figure-liked">
+            {" "}
+            <Liked apiId={apiId} data={data} />
+          </div>
         </figure>
 
         <div className="cocktail__details-figure-ingredients">

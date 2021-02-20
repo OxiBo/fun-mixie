@@ -158,6 +158,8 @@ export const searchCocktails = (
 };
 
 export const likeCocktail = (apiId, data) => async (dispatch) => {
+  console.log(data)
+  console.log(apiId)
   try {
     const res = await axios.post(`/api/like/`, { apiId, data });
     dispatch({ type: FETCH_USER, payload: res.data });

@@ -1,2 +1,2 @@
 export const perPage = 6;
-export const perPageFaveCocktails = 3;
+export const perPageFaveCocktails = 2;

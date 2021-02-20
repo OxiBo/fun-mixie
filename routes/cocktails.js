@@ -53,7 +53,10 @@ router.post("/api/like", async (req, res) => {
 
 router.get("/api/user-cocktails", async (req, res) => {
   const { page, size } = req.query;
-  const startIndex = size * page;
+  const startIndex = size * page - size;
+  console.log(startIndex)
+  const allCocktails = await User.findById(req.user._id)
+  console.log(allCocktails.cocktails) 
   try {
     const result = await User.aggregate([
       { $match: { _id: req.user._id } },
@@ -88,8 +91,9 @@ router.get("/api/user-cocktails", async (req, res) => {
       // },
     ]);
     // console.log(t[0]);
+    console.log(result)
     const [{ total, paginated }] = result;
-
+    // res.send({ total: 0, paginated: [] });
     res.send({ total, paginated });
   } catch (err) {
     console.log(err);

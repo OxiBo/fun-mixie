@@ -38,7 +38,7 @@ const CocktailsList = () => {
     // await setCocktailsList(paginatedCocktails);
   };
 
-  const renderCocktailList = () => {
+  const renderCocktailsList = () => {
     const cocktails = currentCocktails.map((cocktail) => {
       return (
         <CocktailItem
@@ -61,7 +61,7 @@ const CocktailsList = () => {
           </div>
         ) : data.length > 0 ? (
           <>
-            {renderCocktailList(data)}
+            {renderCocktailsList()}
             {data.length > perPage && (
               <div className="cocktails__list-pagination">
                 <Pagination

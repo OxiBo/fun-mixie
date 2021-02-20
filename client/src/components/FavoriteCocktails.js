@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 import Pagination from "./Pagination";
 import Spinner from "./Spinner";
+import Liked from "./Liked";
 import useFetchData from "./customHooks/useFetchData";
 import { fetchFavoriteCocktails } from "../actions";
 import { perPageFaveCocktails } from "../utils/variables";
@@ -16,62 +17,72 @@ const FavoriteCocktails = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
 
-  //   const [faveCocktails, setFaveCocktails] = useState([]);
-  //   const [faveCocktailsError, setFaveCocktailsError] = useState(false);
-  //   const [total, setTotal] = useState(null);
+  useEffect(() => {
+    dispatch(fetchFavoriteCocktails(page, perPageFaveCocktails));
+  }, [dispatch, page]);
 
   const { data, error, loading } = useFetchData(
     selectFaveCocktails,
     selectFaveCocktailsError
   );
 
-  useEffect(() => {
-    dispatch(fetchFavoriteCocktails(page, perPageFaveCocktails));
-  }, [dispatch, fetchFavoriteCocktails, page, perPageFaveCocktails]);
-
   const onPageChange = (currentPage) => {
-    console.log(currentPage);
     setPage(currentPage);
-    // console.log(page);
   };
 
-  //   const total = Object.keys(data).length === 0 && data.total;
-  // console.log(total)
   const renderFaveCocktails = () => {
-    console.log(data.total);
-    console.log(page);
     return (
-      <div className="fave-cocktails-list">
-        {data.paginated.length === 0 ? (
-          <h2 className="fave-cocktails-list-empty heading-tertiary"></h2>
+      <>
+        {data.total === 0 ? (
+          <h2 className="fave-cocktails__empty heading-tertiary">
+            You do not have favorite cocktails yet
+          </h2>
         ) : (
-          <div className="fave-cocktails-list">
-            {data.paginated.map((item) => item.name)}
-          </div>
+          <ul className="fave-cocktails-list">
+            {data.paginated.map(({ _id, name, alcoholic, image, apiId }) => (
+              <li className="fave-cocktails-list-item" key={_id}>
+                <figure className="fave-cocktails-list-item-figure">
+                  <img
+                    className="fave-cocktails-list-item-image"
+                    src={image}
+                    alt="cocktail"
+                  />
+                </figure>
+                <p className="fave-cocktails-list-item-alcoholic">
+                  {alcoholic ? "Alcoholic" : "Non-Alcoholic"}
+                </p>
+                <p className="fave-cocktails-list-item-name">{name}</p>
+                <div className="fave-cocktails-list-item-liked">
+                  <Liked  id={_id} apiId={apiId} />
+                </div>
+              </li>
+            ))}
+          </ul>
         )}
-        {data.total > perPageFaveCocktails && (
-          <Pagination
-            perPage={perPageFaveCocktails}
-            total={data.total}
-            onPageChange={onPageChange}
-          />
-        )}
-      </div>
+      </>
     );
   };
 
   return (
     <main className="main">
-      {loading ? (
-        <Spinner />
-      ) : error ? (
-        <div className="fave-cocktails__error error">
-          {" "}
-          <p classList="error-message">{error}</p>
-        </div>
-      ) : (
-        Object.keys(data).length > 0 && renderFaveCocktails()
-      )}
+      <div className="fave-cocktails">
+        {loading ? (
+          <Spinner />
+        ) : error ? (
+          <div className="fave-cocktails__error error">
+            <p classList="error-message">{error}</p>
+          </div>
+        ) : (
+          data && renderFaveCocktails(data)
+        )}
+        {data && data.total > perPageFaveCocktails && (
+          <Pagination
+            perPage={perPageFaveCocktails}
+            total={data && data.total} //data.total
+            onPageChange={onPageChange}
+          />
+        )}
+      </div>
     </main>
   );
 };

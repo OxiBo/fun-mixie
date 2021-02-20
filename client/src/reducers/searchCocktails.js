@@ -18,7 +18,7 @@ const defaultAuthState = {
   singleCocktailError: false,
   cocktailsList: [],
   cocktailsSearchError: false,
-  faveCocktails: [],
+  faveCocktails: null,
   faveCocktailsError: false,
   typeAhead: [],
   typeAheadEmpty: false,
@@ -56,7 +56,7 @@ const cocktailsReducer = (state = defaultAuthState, action) => {
       return {
         ...state,
         faveCocktailsError: false,
-        faveCocktails: action.payload || [], // ???
+        faveCocktails: action.payload || null, // ???
       };
     case FETCH_FAVE_COCKTAILS_ERROR:
       return {

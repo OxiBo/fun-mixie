@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 
 // svg icons
 import sprite from "../styles/img/sprite.svg";
@@ -6,8 +6,9 @@ import sprite from "../styles/img/sprite.svg";
 const Pagination = ({ perPage, total, onPageChange }) => {
   const [page, setPage] = useState(1);
   const pageCount = Math.ceil(total / perPage);
+
+
   const handlePrev = () => {
-    console.log(page)
     setPage(page - 1);
     onPageChange(page - 1);
   };
