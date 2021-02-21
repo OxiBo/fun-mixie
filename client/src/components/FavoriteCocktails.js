@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Pagination from "./Pagination";
 import Spinner from "./Spinner";
@@ -16,10 +16,16 @@ import {
 const FavoriteCocktails = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
+  const user = useSelector(({ auth }) => auth.user);
+
+  const [faveCocktails, setFaveCocktails ] = useState([])
+  useEffect(() => {
+      setFaveCocktails(user.cocktails)
+  }, [user])
 
   useEffect(() => {
     dispatch(fetchFavoriteCocktails(page, perPageFaveCocktails));
-  }, [dispatch, page]);
+  }, [dispatch, page, faveCocktails.length]);
 
   const { data, error, loading } = useFetchData(
     selectFaveCocktails,
@@ -53,7 +59,7 @@ const FavoriteCocktails = () => {
                 </p>
                 <p className="fave-cocktails-list-item-name">{name}</p>
                 <div className="fave-cocktails-list-item-liked">
-                  <Liked  id={_id} apiId={apiId} />
+                  <Liked apiId={apiId} />
                 </div>
               </li>
             ))}

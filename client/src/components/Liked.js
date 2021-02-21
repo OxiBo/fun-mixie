@@ -15,10 +15,13 @@ const Liked = ({ apiId, data }) => {
 
         // svg gradient - https://fvsch.com/svg-gradient-fill
         if (user) {
-          const liked = user.cocktails.findIndex(
-            (cocktail) => cocktail.apiId === apiId
-          ) < 0 ? false : true;
-         
+          const liked =
+            user.cocktails.findIndex((cocktail) => cocktail.apiId === apiId) < 0
+              ? false
+              : true;
+
+              const notLiked = liked ? "from-light" : "from-white"
+
           console.log(liked);
           return (
             <div
@@ -30,7 +33,7 @@ const Liked = ({ apiId, data }) => {
                 <linearGradient id="heart-full-gradient" x2="1" y2="1">
                   <stop
                     offset="0%"
-                    className={`${liked ? "from-light" : "from-white"}`}
+                    className={notLiked}
                   />
                   <stop
                     offset="100%"
