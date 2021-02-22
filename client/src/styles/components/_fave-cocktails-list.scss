@@ -6,14 +6,55 @@
     &-item {
       border-bottom: 1px solid #000;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
-      &-figure{
-
+      padding: 0.5rem 0;
+      transition: all 1s;
+      > * {
+        text-align: center;
       }
-      &-image{
+      &-figure {
+        flex: 0 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &-image {
         width: 7rem;
       }
+      &-alcoholic {
+        flex: 0 25%;
+        font-size: 1.2rem;
+      }
+
+      &-name,
+      &-name:link,
+      &-name:focus {
+        flex: 0 25%;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        align-self: stretch;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        outline: none;
+        transition: all 0.3s;
+      }
+      &-name:active{
+        transform: translateY(2px);
+      }
+      &-name:hover {
+        letter-spacing: 1.4px;
+      }
+
+      &-liked {
+        flex: 0 25%;
+      }
+    }
+    &-item:hover{
+      transform: translateY(-1px);
+      background-image: linear-gradient(to right, $color-primary-secondary, lighten($color-grey-dark, 20));
     }
   }
 }

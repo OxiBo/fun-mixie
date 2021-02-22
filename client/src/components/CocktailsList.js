@@ -40,9 +40,10 @@ const CocktailsList = () => {
 
   const renderCocktailsList = () => {
     const cocktails = currentCocktails.map((cocktail) => {
+      console.log(cocktail)
       return (
         <CocktailItem
-          key={`${cocktail.id}-${cocktail.name}`}
+          key={`${cocktail.apiId}-${cocktail.name}`}
           cocktail={cocktail}
         />
       );

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-
+import { useHistory } from "react-router-dom";
 // svg icons
 import sprite from "../styles/img/sprite.svg";
 import Spinner from "./Spinner";
@@ -20,11 +20,12 @@ const SingleCocktail = () => {
   );
 
   const dispatch = useDispatch();
-
+  const history = useHistory();
   // useEffect(() => {
   //   dispatch(searchSingleCocktail());
   // }, [dispatch]);
 
+  
   const renderCocktailInfo = () => {
     const {
       apiId,

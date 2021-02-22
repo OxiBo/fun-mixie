@@ -1,4 +1,6 @@
 import React from "react";
+// TODO get rid of render prop User and fetch user info from redux store
+
 
 import { useDispatch } from "react-redux";
 
@@ -19,10 +21,6 @@ const Liked = ({ apiId, data }) => {
             user.cocktails.findIndex((cocktail) => cocktail.apiId === apiId) < 0
               ? false
               : true;
-
-              const notLiked = liked ? "from-light" : "from-white"
-
-          console.log(liked);
           return (
             <div
               onClick={() => dispatch(likeCocktail(apiId, liked || data))}
@@ -33,7 +31,7 @@ const Liked = ({ apiId, data }) => {
                 <linearGradient id="heart-full-gradient" x2="1" y2="1">
                   <stop
                     offset="0%"
-                    className={notLiked}
+                    className={`${liked ? "from-light" : "from-white"}`}
                   />
                   <stop
                     offset="100%"

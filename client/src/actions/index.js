@@ -76,17 +76,19 @@ export const clearCocktailsList = () => {
   return { type: CLEAR_COCKTAILS_LIST };
 };
 
+
 export const searchSingleCocktail = (id, noSearch) => async (
   dispatch,
   getState
 ) => {
   let cocktailDetails;
+
   try {
     if (noSearch) {
       // cocktailDetails = await getState.cocktails.singleCocktail;
       // console.log(cocktailDetails);
       cocktailDetails = getState().cocktails.cocktailsList.find(
-        (item) => item.id === id
+        (item) => item.apiId === id
       );
     } else {
       const res = await cocktaildb.get(`/lookup.php?i=${id}`);
@@ -160,9 +162,9 @@ export const searchCocktails = (
 export const likeCocktail = (apiId, data) => async (dispatch) => {
   try {
     const res = await axios.post(`/api/like/`, { apiId, data });
-    
+
     dispatch({ type: FETCH_USER, payload: res.data });
-    console.log(res.data)
+    console.log(res.data);
     // console.log(res.data)
   } catch (err) {
     console.log(err);

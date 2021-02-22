@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from "react";
-
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Pagination from "./Pagination";
 import Spinner from "./Spinner";
 import Liked from "./Liked";
 import useFetchData from "./customHooks/useFetchData";
+
 import { fetchFavoriteCocktails } from "../actions";
 import { perPageFaveCocktails } from "../utils/variables";
 import {
   selectFaveCocktails,
   selectFaveCocktailsError,
 } from "./selectors/cocktails";
+import FaveCocktailItem from "./FaveCocktailItem";
 
 const FavoriteCocktails = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
+  const history = useHistory();
   const user = useSelector(({ auth }) => auth.user);
 
-  const [faveCocktails, setFaveCocktails ] = useState([])
+  const [faveCocktails, setFaveCocktails] = useState([]);
   useEffect(() => {
-      setFaveCocktails(user.cocktails)
-  }, [user])
+    if (user) {
+      setFaveCocktails(user.cocktails);
+    }
+  }, [user]);
 
   useEffect(() => {
     dispatch(fetchFavoriteCocktails(page, perPageFaveCocktails));
@@ -45,23 +50,11 @@ const FavoriteCocktails = () => {
           </h2>
         ) : (
           <ul className="fave-cocktails-list">
-            {data.paginated.map(({ _id, name, alcoholic, image, apiId }) => (
-              <li className="fave-cocktails-list-item" key={_id}>
-                <figure className="fave-cocktails-list-item-figure">
-                  <img
-                    className="fave-cocktails-list-item-image"
-                    src={image}
-                    alt="cocktail"
-                  />
-                </figure>
-                <p className="fave-cocktails-list-item-alcoholic">
-                  {alcoholic ? "Alcoholic" : "Non-Alcoholic"}
-                </p>
-                <p className="fave-cocktails-list-item-name">{name}</p>
-                <div className="fave-cocktails-list-item-liked">
-                  <Liked apiId={apiId} />
-                </div>
-              </li>
+            {data.paginated.map(cocktail => (
+              <FaveCocktailItem
+                key={cocktail._id}
+                cocktail={cocktail}
+              />
             ))}
           </ul>
         )}

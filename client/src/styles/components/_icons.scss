@@ -45,6 +45,16 @@
   cursor: pointer;
 }
 
+// .icon-heart:hover{
+//   width: 3.5rem;
+//   height: 3.5rem;
+// }
+
+.icon-heart:hover{
+  outline: none;
+  animation: pulsate 1s infinite;
+}
+
 .icon-heart:active {
   transform: translateY(2px);
 }
