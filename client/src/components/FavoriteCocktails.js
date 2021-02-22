@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Pagination from "./Pagination";
 import Spinner from "./Spinner";
-import Liked from "./Liked";
+import ErrorMessage from "./ErrorMessage";
 import useFetchData from "./customHooks/useFetchData";
 
 import { fetchFavoriteCocktails } from "../actions";
@@ -18,7 +18,7 @@ import FaveCocktailItem from "./FaveCocktailItem";
 const FavoriteCocktails = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const history = useHistory();
+
   const user = useSelector(({ auth }) => auth.user);
 
   const [faveCocktails, setFaveCocktails] = useState([]);
@@ -50,11 +50,8 @@ const FavoriteCocktails = () => {
           </h2>
         ) : (
           <ul className="fave-cocktails-list">
-            {data.paginated.map(cocktail => (
-              <FaveCocktailItem
-                key={cocktail._id}
-                cocktail={cocktail}
-              />
+            {data.paginated.map((cocktail) => (
+              <FaveCocktailItem key={cocktail._id} cocktail={cocktail} />
             ))}
           </ul>
         )}
@@ -63,13 +60,13 @@ const FavoriteCocktails = () => {
   };
 
   return (
-    <main className="main">
+    <>
       <div className="fave-cocktails">
         {loading ? (
           <Spinner />
         ) : error ? (
-          <div className="fave-cocktails__error error">
-            <p classList="error-message">{error}</p>
+          <div className="fave-cocktails__error">
+            <ErrorMessage error={error} />
           </div>
         ) : (
           data && renderFaveCocktails(data)
@@ -82,7 +79,7 @@ const FavoriteCocktails = () => {
           />
         )}
       </div>
-    </main>
+    </>
   );
 };
 

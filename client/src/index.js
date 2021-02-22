@@ -15,6 +15,7 @@ import App from "./components/App";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import FavoriteCocktails from "./components/FavoriteCocktails";
+import NotFoundPage from "./components/NotFoundPage";
 
 
 // styles
@@ -28,13 +29,15 @@ ReactDOM.render(
     {" "}
     <Provider store={store}>
       <BrowserRouter>
-        <Switch>
           <App>
+        <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/signin" component={SignIn} />
-            <Route exact path="/cocktails" component={FavoriteCocktails} />
-          </App>
+            <Route exact path="/my-cocktails" component={FavoriteCocktails} />
+            {/* https://stackoverflow.com/questions/51457480/react-router-4-catch-all-route */}
+            <Route component={NotFoundPage} />
         </Switch>
+          </App>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

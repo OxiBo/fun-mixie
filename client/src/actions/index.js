@@ -76,7 +76,6 @@ export const clearCocktailsList = () => {
   return { type: CLEAR_COCKTAILS_LIST };
 };
 
-
 export const searchSingleCocktail = (id, noSearch) => async (
   dispatch,
   getState
@@ -162,10 +161,7 @@ export const searchCocktails = (
 export const likeCocktail = (apiId, data) => async (dispatch) => {
   try {
     const res = await axios.post(`/api/like/`, { apiId, data });
-
     dispatch({ type: FETCH_USER, payload: res.data });
-    console.log(res.data);
-    // console.log(res.data)
   } catch (err) {
     console.log(err);
   }
@@ -183,6 +179,6 @@ export const fetchFavoriteCocktails = (
     dispatch({ type: FETCH_FAVE_COCKTAILS, payload: { total, paginated } });
   } catch (err) {
     console.log(err);
-    dispatch({ type: FETCH_FAVE_COCKTAILS_ERROR, payload: err.message });
+    dispatch({ type: FETCH_FAVE_COCKTAILS_ERROR, payload: err.response.data });
   }
 };

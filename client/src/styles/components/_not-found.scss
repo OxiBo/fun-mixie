@@ -1,0 +1,10 @@
+.not-found {
+  width: 100%;
+  background-color: $color-grey-light-3;
+  p {
+    font-weight: 500;
+  }
+  strong{
+      display: block;
+  }
+}

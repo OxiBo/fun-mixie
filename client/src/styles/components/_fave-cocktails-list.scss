@@ -25,6 +25,9 @@
       &-alcoholic {
         flex: 0 25%;
         font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       &-name,
@@ -41,7 +44,7 @@
         outline: none;
         transition: all 0.3s;
       }
-      &-name:active{
+      &-name:active {
         transform: translateY(2px);
       }
       &-name:hover {
@@ -52,9 +55,13 @@
         flex: 0 25%;
       }
     }
-    &-item:hover{
+    &-item:hover {
       transform: translateY(-1px);
-      background-image: linear-gradient(to right, $color-primary-secondary, lighten($color-grey-dark, 20));
+      background-image: linear-gradient(
+        to right,
+        $color-primary-secondary,
+        lighten($color-grey-dark, 20)
+      );
     }
   }
 }

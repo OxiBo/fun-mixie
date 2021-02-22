@@ -6,7 +6,7 @@ import { searchSingleCocktail } from "../actions";
 const CocktailItem = ({ cocktail: { apiId, image, name, ingredients } }) => {
   // console.log(props)
   const dispatch = useDispatch();
-  console.log(apiId)
+ 
   return (
     <li className="cocktails__list-item" data-cocktail-id={apiId}>
       <button

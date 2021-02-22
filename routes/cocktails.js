@@ -1,13 +1,14 @@
-const { route } = require("./auth");
+// const { route } = require("./auth");
 
 const express = require("express"),
   mongoose = require("mongoose"),
   User = require("../models/User"),
   Cocktail = require("../models/Cocktail"),
+  isLoggedIn = require('../middleware/isLoggedIn')
   router = express.Router();
 
 // TODO - create a middleware to check if user is logged in
-router.post("/api/like", async (req, res) => {
+router.post("/api/like", isLoggedIn, async (req, res) => {
   try {
     let user = await User.findById(req.user);
     // check if the cocktails info is already in db
@@ -51,7 +52,7 @@ router.post("/api/like", async (req, res) => {
   }
 });
 
-router.get("/api/user-cocktails", async (req, res) => {
+router.get("/api/user-cocktails", isLoggedIn, async (req, res) => {
   const { page, size } = req.query;
   const startIndex = size * page - size;
   console.log(startIndex)
@@ -91,7 +92,7 @@ router.get("/api/user-cocktails", async (req, res) => {
       // },
     ]);
     // console.log(t[0]);
-    console.log(result)
+    // console.log(result)
     const [{ total, paginated }] = result;
     // res.send({ total: 0, paginated: [] });
     res.send({ total, paginated });

@@ -22,11 +22,11 @@ const Home = () => {
 
 
   return (
-    <main className="main">
+    <>
       <CocktailsList />
       <SingleCocktail />
       <IngredientInfo />
-    </main>
+    </>
   );
 };
 

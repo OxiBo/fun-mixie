@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import Footer from "./Footer"
+import Footer from "./Footer";
 
 const App = (props) => {
   return (
@@ -8,7 +8,7 @@ const App = (props) => {
       <Header />
       {/* <hr/> */}
       <hr className="hr-solid" />
-      {props.children}
+      <main className="main">{props.children}</main>
       <hr className="hr-solid" />
       <Footer />
     </div>

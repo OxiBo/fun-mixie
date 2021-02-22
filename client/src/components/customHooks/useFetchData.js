@@ -14,6 +14,7 @@ const useFetchData = (selectorData, selectorError) => {
       await setLoading(true);
       await setData(fetchData);
       await setError(fetchError);
+      
       if (data || error) {
         await setLoading(false);
       }
