@@ -24,7 +24,7 @@
       box-shadow: $box-shadow-medium;
       object-fit: cover;
       transform: scale(1.01);
-      @include respond(phone){
+      @include respond(phone) {
         max-width: 30rem;
         max-height: 30rem;
       }
@@ -37,7 +37,7 @@
       text-align: center;
       z-index: 1;
       margin: 0 auto;
-      
+
       //   transform: skewY(4deg);
     }
     &-name {
@@ -135,23 +135,92 @@
         text-align: center;
       }
     }
-    &-serve {
+
+    &-bottom {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2rem;
       background-color: $color-grey-light-3;
-      &-text {
-        color: $color-primary-secondary;
-        font-size: 1.5rem;
-      }
+      color: $color-primary-secondary;
+      font-size: 1.5rem;
       &-icon {
         fill: $color-primary;
         margin-right: 2rem;
         transition: all 0.5s;
       }
-      &-icon:hover {
-        transform: translateX(5px);
+      &-serve {
+        flex: 0 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+
+        .icon-serve:hover {
+          transform: translateX(5px);
+        }
+      }
+      &-email {
+        flex: 0 50%;
+        display: flex;
+        align-items: center;
+        position: relative;
+        .icon-email:hover {
+          outline: none;
+          animation: pulsate 1s infinite;
+        }
+      }
+      &-form-label {
+        // opacity: 1;
+        display: inline-block;
+        transform: translateX();
+        transition: all 1s;
+      }
+      .label-hide {
+        transform: translateX(15rem);
+        opacity: 0;
+        visibility: hidden;
+      }
+      &-form-email {
+        // position: absolute;
+        // left: -1rem;
+        transform: translateX(-15rem);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 1s; // transform .8s, opacity 1.5s;
+        &-input{
+          width: 15rem;
+          border-radius: 100px;
+          border: 1px solid $color-grey-light-1;
+          height: 3rem;
+        }
+        &-submit, 
+        &-submit:focus{
+          background-color: inherit;
+          border: none;
+          padding: 1rem 2rem;
+          cursor: pointer;
+          font-family: inherit;
+         
+          color: inherit;
+          font-size: inherit;
+          transition: all .5s;
+          outline: none;
+        }
+        &-submit:active{
+          transform: translateY(2px);
+        }
+        &-submit:hover{
+          letter-spacing: 1.2px;
+        }
+      }
+
+      .email-show {
+        // position: static;
+        // left: 8rem;
+        transform: translateX(-4rem);
+        opacity: 1;
+        visibility: visible;
+        // transition: transform 1s, opacity .5s;
       }
     }
   }

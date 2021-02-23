@@ -1,5 +1,5 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 // svg icons
 import sprite from "../styles/img/sprite.svg";
@@ -14,12 +14,14 @@ import {
 import useFetchData from "./customHooks/useFetchData";
 
 const SingleCocktail = () => {
+  const [formShow, setFormShow] = useState(false);
   const { data, error, loading } = useFetchData(
     selectSingleCocktail,
     selectSingleCocktailError
   );
 
   const dispatch = useDispatch();
+  const user = useSelector(({ auth }) => auth.user);
 
   const renderCocktailInfo = () => {
     const {
@@ -103,16 +105,59 @@ const SingleCocktail = () => {
             </p>
           </div>
         </div>
-        <div className="cocktail__details-figure-serve">
-          <svg className="cocktail__details-figure-serve-icon icon icon-arrow">
-            <use href={sprite + "#icon-redo2"} />
-          </svg>
-          <p className="cocktail__details-figure-serve-text">
-            Serve in{" "}
-            <span className="cocktail__details-figure-serve-text-glass">
-              {glass}
-            </span>
-          </p>
+        <div className="cocktail__details-figure-bottom">
+          <div className="cocktail__details-figure-bottom-serve">
+            <svg className="cocktail__details-figure-bottom-icon icon-serve icon icon-arrow">
+              <use href={sprite + "#icon-redo2"} />
+            </svg>
+            <p className="cocktail__details-figure-bottom-serve-text">
+              Serve in{" "}
+              <span className="cocktail__details-figure-bottom-serve-text-glass">
+                {glass}
+              </span>
+            </p>
+          </div>
+          {user && (
+            <div className="cocktail__details-figure-bottom-email">
+              <svg className="cocktail__details-figure-bottom-icon icon-email icon icon-envelop">
+                <use href={sprite + "#icon-envelop"} />
+              </svg>{" "}
+              <form
+                action=""
+                className="cocktail__details-figure-bottom-form-checkbox"
+              >
+                <input
+                  type="text"
+                  id="email"
+                  type="checkbox"
+                  onChange={() => setFormShow(!formShow)}
+                  className="cocktail__details-figure-bottom-form-check"
+                />
+                <label
+                  htmlFor="email"
+                  className={`cocktail__details-figure-bottom-form-label ${
+                    formShow ? "label-hide" : ""
+                  }`}
+                >
+                  Email it
+                </label>
+              </form>
+              <form
+                action=""
+                className={`cocktail__details-figure-bottom-form-email ${
+                  formShow ? "email-show" : ""
+                }`}
+              >
+                <input
+                  type="text"
+                  className="cocktail__details-figure-bottom-form-email-input"
+                />
+                <button className="cocktail__details-figure-bottom-form-email-submit">
+                  Email it
+                </button>
+              </form>
+            </div>
+          )}
         </div>
       </>
     );
