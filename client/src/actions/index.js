@@ -182,3 +182,15 @@ export const fetchFavoriteCocktails = (
     dispatch({ type: FETCH_FAVE_COCKTAILS_ERROR, payload: err.response.data });
   }
 };
+
+export const emailCocktail = (cocktail, email) => async (dispatch) => {
+  console.log(cocktail);
+  console.log(email);
+  const res = await axios.post('/api/email-cocktail', {cocktail, email})
+  console.log(res.data)
+  try{
+
+  }catch(err){
+    console.error(err)
+  }
+};

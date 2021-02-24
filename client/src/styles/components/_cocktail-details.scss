@@ -143,9 +143,11 @@
       background-color: $color-grey-light-3;
       color: $color-primary-secondary;
       font-size: 1.5rem;
+      padding: 2rem 0;
+      &-envelope {
+      }
       &-icon {
         fill: $color-primary;
-        margin-right: 2rem;
         transition: all 0.5s;
       }
       &-serve {
@@ -163,61 +165,111 @@
         flex: 0 50%;
         display: flex;
         align-items: center;
+        // justify-content: space-between;
         position: relative;
+      }
+      &-envelope {
+        flex: 0 10%;
         .icon-email:hover {
           outline: none;
           animation: pulsate 1s infinite;
         }
       }
+      &-form-checkbox {
+        flex: 0 9rem;
+      }
       &-form-label {
         // opacity: 1;
         display: inline-block;
         transform: translateX();
-        transition: all 1s;
+        transition: all 0.9s;
+        margin-left: 1rem;
       }
       .label-hide {
-        transform: translateX(15rem);
+        transform: translateX(20rem);
         opacity: 0;
         visibility: hidden;
       }
       &-form-email {
-        // position: absolute;
-        // left: -1rem;
+        flex: 1 60%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         transform: translateX(-15rem);
         opacity: 0;
         visibility: hidden;
-        transition: all 1s; // transform .8s, opacity 1.5s;
-        &-input{
-          width: 15rem;
+        position: relative;
+        transition: all 1.1s; // transform .8s, opacity 1.5s;
+        &-input {
+          // flex: 0 5rem;
+          // margin: 0 auto;
           border-radius: 100px;
           border: 1px solid $color-grey-light-1;
           height: 3rem;
+          padding: 1rem 1.5rem;
+          font-family: inherit;
+          font-size: 1.2rem;
+          // transition: all 0.3s;
         }
-        &-submit, 
-        &-submit:focus{
-          background-color: inherit;
+        &-input:focus {
+          outline: none;
+          box-shadow: inset 0.05rem 0.05rem 0.05rem rgba(0, 0, 0, 0.4);
+        }
+        &-error {
+          position: absolute;
+          top: 4.5rem;
+          left: 2rem;
+          font-size: 1rem;
+          font-style: italic;
+        }
+        &-submit,
+        &-submit:focus {
+          // flex: 0 10%;
+          background-color: transparent;
           border: none;
           padding: 1rem 2rem;
           cursor: pointer;
           font-family: inherit;
-         
           color: inherit;
           font-size: inherit;
-          transition: all .5s;
+          transition: all 0.5s;
           outline: none;
+          position: relative;
         }
-        &-submit:active{
+        &-submit:active {
           transform: translateY(2px);
         }
-        &-submit:hover{
-          letter-spacing: 1.2px;
+        &-submit:after {
+          position: absolute;
+          top: 3.5rem;
+          left: 1.5rem;
+          content: "";
+          height: 2px;
+          background-image: linear-gradient(
+            to left,
+            $color-primary,
+            $color-primary-secondary
+          );
+          width: 70%;
+          visibility: hidden;
+          transform: scaleX(0);
+          transition: 0.5s linear;
+
+          // transition: all .5s;
+        }
+        &-submit:hover {
+          animation: text-pulsate 1s infinite;
+        }
+        &-submit:hover:after {
+          visibility: visible;
+          transform: scaleX(1);
         }
       }
 
       .email-show {
         // position: static;
         // left: 8rem;
-        transform: translateX(-4rem);
+        transform: translateX(-7rem);
         opacity: 1;
         visibility: visible;
         // transition: transform 1s, opacity .5s;

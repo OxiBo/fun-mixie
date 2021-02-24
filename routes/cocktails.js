@@ -4,8 +4,8 @@ const express = require("express"),
   mongoose = require("mongoose"),
   User = require("../models/User"),
   Cocktail = require("../models/Cocktail"),
-  isLoggedIn = require('../middleware/isLoggedIn')
-  router = express.Router();
+  isLoggedIn = require("../middleware/isLoggedIn");
+router = express.Router();
 
 // TODO - create a middleware to check if user is logged in
 router.post("/api/like", isLoggedIn, async (req, res) => {
@@ -55,9 +55,9 @@ router.post("/api/like", isLoggedIn, async (req, res) => {
 router.get("/api/user-cocktails", isLoggedIn, async (req, res) => {
   const { page, size } = req.query;
   const startIndex = size * page - size;
-  console.log(startIndex)
-  const allCocktails = await User.findById(req.user._id)
-  console.log(allCocktails.cocktails) 
+  console.log(startIndex);
+  const allCocktails = await User.findById(req.user._id);
+  console.log(allCocktails.cocktails);
   try {
     const result = await User.aggregate([
       { $match: { _id: req.user._id } },
@@ -102,4 +102,8 @@ router.get("/api/user-cocktails", isLoggedIn, async (req, res) => {
   }
 });
 
+router.post("/api/email-cocktail", isLoggedIn, async (req, res) => {
+  console.log(req.body);
+  res.send("data received")
+});
 module.exports = router;

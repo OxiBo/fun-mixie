@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 // svg icons
 import sprite from "../styles/img/sprite.svg";
 import Spinner from "./Spinner";
+import EmailForm from "./EmailForm";
 import Liked from "./Liked";
 import { searchIngredient } from "../actions";
 import {
@@ -14,14 +15,14 @@ import {
 import useFetchData from "./customHooks/useFetchData";
 
 const SingleCocktail = () => {
-  const [formShow, setFormShow] = useState(false);
+  
   const { data, error, loading } = useFetchData(
     selectSingleCocktail,
     selectSingleCocktailError
   );
 
   const dispatch = useDispatch();
-  const user = useSelector(({ auth }) => auth.user);
+  // const user = useSelector(({ auth }) => auth.user);
 
   const renderCocktailInfo = () => {
     const {
@@ -117,47 +118,7 @@ const SingleCocktail = () => {
               </span>
             </p>
           </div>
-          {user && (
-            <div className="cocktail__details-figure-bottom-email">
-              <svg className="cocktail__details-figure-bottom-icon icon-email icon icon-envelop">
-                <use href={sprite + "#icon-envelop"} />
-              </svg>{" "}
-              <form
-                action=""
-                className="cocktail__details-figure-bottom-form-checkbox"
-              >
-                <input
-                  type="text"
-                  id="email"
-                  type="checkbox"
-                  onChange={() => setFormShow(!formShow)}
-                  className="cocktail__details-figure-bottom-form-check"
-                />
-                <label
-                  htmlFor="email"
-                  className={`cocktail__details-figure-bottom-form-label ${
-                    formShow ? "label-hide" : ""
-                  }`}
-                >
-                  Email it
-                </label>
-              </form>
-              <form
-                action=""
-                className={`cocktail__details-figure-bottom-form-email ${
-                  formShow ? "email-show" : ""
-                }`}
-              >
-                <input
-                  type="text"
-                  className="cocktail__details-figure-bottom-form-email-input"
-                />
-                <button className="cocktail__details-figure-bottom-form-email-submit">
-                  Email it
-                </button>
-              </form>
-            </div>
-          )}
+           <EmailForm cocktail={data}/>
         </div>
       </>
     );
