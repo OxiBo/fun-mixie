@@ -4,9 +4,11 @@ const express = require("express"),
   mongoose = require("mongoose"),
   User = require("../models/User"),
   Cocktail = require("../models/Cocktail"),
-  isLoggedIn = require("../middleware/isLoggedIn");
-router = express.Router();
-
+  isLoggedIn = require("../middleware/isLoggedIn"),
+  router = express.Router(),
+  mailer = require("../services/mailer"),
+  emailTemplate = require("../services/emailTemplate"),
+  { brand } = require("../utils/variables");
 // TODO - create a middleware to check if user is logged in
 router.post("/api/like", isLoggedIn, async (req, res) => {
   try {
@@ -104,6 +106,15 @@ router.get("/api/user-cocktails", isLoggedIn, async (req, res) => {
 
 router.post("/api/email-cocktail", isLoggedIn, async (req, res) => {
   console.log(req.body);
-  res.send("data received")
+  const { cocktail, email } = req.body;
+  let mailOptions = {
+    from: "example@gmail.com",
+    to: "superpuperoxi@gmail.com",
+    subject: `Your cocktails ${cocktail.name} details from ${brand}`,
+    html: emailTemplate(cocktail),
+  };
+  mailer(mailOptions);
+
+  res.send("data received");
 });
 module.exports = router;

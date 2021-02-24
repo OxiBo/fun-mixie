@@ -144,7 +144,14 @@
       color: $color-primary-secondary;
       font-size: 1.5rem;
       padding: 2rem 0;
+      @include respond(tab-port){
+        flex-wrap: wrap;
+        padding: 0;
+      }
       &-envelope {
+        @include respond(tab-port){
+       
+        }
       }
       &-icon {
         fill: $color-primary;
@@ -156,7 +163,10 @@
         justify-content: center;
         align-items: center;
         padding: 2rem;
-
+        @include respond(tab-port){
+          flex: 0 100%;
+          // flex: 1;
+        }
         .icon-serve:hover {
           transform: translateX(5px);
         }
@@ -165,8 +175,15 @@
         flex: 0 50%;
         display: flex;
         align-items: center;
-        // justify-content: space-between;
+        padding: 1rem 0.7rem;
+        justify-content: center;
         position: relative;
+        @include respond(tab-port){
+          justify-content: center;
+          flex: 0 100%;
+          // padding-left: 2rem;
+        }
+     
       }
       &-envelope {
         flex: 0 10%;
@@ -177,6 +194,11 @@
       }
       &-form-checkbox {
         flex: 0 9rem;
+        @include respond(tab-port){
+          flex: 0 9rem;
+         width: 15rem;
+         justify-content: center;
+        }
       }
       &-form-label {
         // opacity: 1;
@@ -191,7 +213,8 @@
         visibility: hidden;
       }
       &-form-email {
-        flex: 1 60%;
+        // flex: 0 1%;
+        // width: 10rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -221,6 +244,7 @@
           left: 2rem;
           font-size: 1rem;
           font-style: italic;
+          color: darken($color-primary-secondary, 15);
         }
         &-submit,
         &-submit:focus {
@@ -269,6 +293,7 @@
       .email-show {
         // position: static;
         // left: 8rem;
+        // flex: 0 60%;
         transform: translateX(-7rem);
         opacity: 1;
         visibility: visible;
