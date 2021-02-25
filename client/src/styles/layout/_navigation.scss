@@ -8,6 +8,9 @@
     flex: 0 0 60%;
     // order: 1;
   }
+  @include respond(tab-land) {
+  
+  }
   .nav-bar__list {
     flex: 1;
     display: flex;

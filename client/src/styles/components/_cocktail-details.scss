@@ -100,10 +100,15 @@
     }
     &-ingredients-list {
       list-style: none;
+      width: 80%;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0.5rem 0.5rem;
       padding-bottom: 2rem;
+      @include respond(phone){
+        width: 100%;
+      }
     }
     &-ingredients-item {
       font-size: 1.5rem;
@@ -143,12 +148,15 @@
       background-color: $color-grey-light-3;
       color: $color-primary-secondary;
       font-size: 1.5rem;
+      font-size: 1.2rem;
       padding: 2rem 0;
+      
       @include respond(tab-port){
         flex-wrap: wrap;
         padding: 0;
       }
       &-envelope {
+        margin-right: .5rem;
         @include respond(tab-port){
        
         }
@@ -158,7 +166,7 @@
         transition: all 0.5s;
       }
       &-serve {
-        flex: 0 50%;
+        flex: 0 40%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -167,12 +175,15 @@
           flex: 0 100%;
           // flex: 1;
         }
+        .icon-serve{
+          margin-right: .5rem;
+        }
         .icon-serve:hover {
           transform: translateX(5px);
         }
       }
       &-email {
-        flex: 0 50%;
+        flex: 0 60%;
         display: flex;
         align-items: center;
         padding: 1rem 0.7rem;
@@ -213,7 +224,7 @@
         visibility: hidden;
       }
       &-form-email {
-        // flex: 0 1%;
+        flex: 0 60%;
         // width: 10rem;
         display: flex;
         align-items: center;
@@ -226,12 +237,13 @@
         &-input {
           // flex: 0 5rem;
           // margin: 0 auto;
+          width: 60%;
           border-radius: 100px;
           border: 1px solid $color-grey-light-1;
           height: 3rem;
           padding: 1rem 1.5rem;
           font-family: inherit;
-          font-size: 1.2rem;
+          font-size: 1rem;
           // transition: all 0.3s;
         }
         &-input:focus {
@@ -241,7 +253,7 @@
         &-error {
           position: absolute;
           top: 4.5rem;
-          left: 2rem;
+          left: 6rem;
           font-size: 1rem;
           font-style: italic;
           color: darken($color-primary-secondary, 15);
@@ -251,7 +263,7 @@
           // flex: 0 10%;
           background-color: transparent;
           border: none;
-          padding: 1rem 2rem;
+          padding: 1rem;
           cursor: pointer;
           font-family: inherit;
           color: inherit;
@@ -293,10 +305,11 @@
       .email-show {
         // position: static;
         // left: 8rem;
-        // flex: 0 60%;
+        // flex: 0 70%;
         transform: translateX(-7rem);
         opacity: 1;
         visibility: visible;
+        // font-size: 1.2rem;
         // transition: transform 1s, opacity .5s;
       }
     }

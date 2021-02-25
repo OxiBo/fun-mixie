@@ -1,3 +1,5 @@
+// https://charangan.medium.com/send-an-email-using-nodemailer-and-gmail-in-node-js-express-js-34523d5e0aa4
+
 const keys = require("../config/keys"),
   nodemailer = require("nodemailer"),
   smtpTransport = require("nodemailer-smtp-transport");
