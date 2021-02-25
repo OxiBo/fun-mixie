@@ -5,7 +5,6 @@ import Liked from "./Liked";
 
 const FaveCocktailItem = ({ cocktail: { name, alcoholic, image, apiId } }) => {
   const history = useHistory();
-  console.log(image);
   return (
     <li className="fave-cocktails-list-item">
       <figure className="fave-cocktails-list-item-figure">

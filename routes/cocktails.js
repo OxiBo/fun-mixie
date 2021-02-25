@@ -109,7 +109,7 @@ router.post("/api/email-cocktail", isLoggedIn, async (req, res) => {
   const { cocktail, email } = req.body;
   let mailOptions = {
     from: "example@gmail.com",
-    to: "superpuperoxi@gmail.com",
+    to: email,
     subject: `Your cocktails ${cocktail.name} details from ${brand}`,
     html: emailTemplate(cocktail),
   };

@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { emailCocktail } from "../actions";
 import sprite from "../styles/img/sprite.svg";
 const EmailForm = ({ cocktail }) => {
-    
   const [formShow, setFormShow] = useState(false);
-  const [email, setEmail] = useState("");
+
+  const user = useSelector(({ auth }) => auth.user);
+  const [email, setEmail] = useState(user && user.email);
   const [emailError, setEmailError] = useState(null);
   const dispatch = useDispatch();
-  const user = useSelector(({ auth }) => auth.user);
+ 
+
+  
+
+//  useEffect(() => {
+//    setEmail(user.email)
+//  }, [user.email])
   return (
     <>
       {user && (
@@ -28,7 +35,7 @@ const EmailForm = ({ cocktail }) => {
               type="checkbox"
               onChange={() => {
                 setEmailError(null);
-                setEmail("");
+                {/* setEmail(""); */}
                 setFormShow(!formShow);
               }}
               className="cocktail__details-figure-bottom-form-check"
@@ -51,7 +58,6 @@ const EmailForm = ({ cocktail }) => {
             onSubmit={(e) => {
               e.preventDefault();
               if (!emailError) {
-                 
                 dispatch(emailCocktail(cocktail, email));
                 setEmail("");
                 setFormShow(!formShow);
