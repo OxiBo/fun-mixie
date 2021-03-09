@@ -34,4 +34,16 @@ router.post("/api/posts/new", isLoggedIn, async (req, res) => {
   }
 });
 
+router.get("/api/posts/show/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const post = await Post.findById(id);
+    // console.log(post)
+    res.send(post);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;

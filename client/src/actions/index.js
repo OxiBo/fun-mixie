@@ -19,6 +19,8 @@ import {
   AUTOCOMPLETE_EMPTY,
   FETCH_FAVE_COCKTAILS,
   FETCH_FAVE_COCKTAILS_ERROR,
+  SINGLE_POST,
+  SINGLE_POST_ERROR,
 } from "./types";
 
 export const fetchUser = () => async (dispatch) => {
@@ -197,11 +199,24 @@ export const emailCocktail = (cocktail, email) => async (dispatch) => {
 };
 
 export const createPost = (post) => async (dispatch) => {
-  console.log(post)
+  console.log(post);
   try {
-    const newPost = await axios.post("/api/posts/new", post);
-    console.log(newPost);
+    const { data } = await axios.post("/api/posts/new", post);
+    console.log(data);
+    dispatch({ type: SINGLE_POST, payload: data });
   } catch (err) {
     console.log(err);
+    dispatch({ type: SINGLE_POST_ERROR, payload: err.data });
+  }
+};
+
+export const fetchPost = (id) => async (dispatch) => {
+  try {
+    const { data } = await axios.get(`/api/posts/show/${id}`);
+    console.log(data);
+    dispatch({ type: SINGLE_POST, payload: data });
+  } catch (err) {
+    console.log(err);
+    dispatch({ type: SINGLE_POST_ERROR, payload: err.data });
   }
 };
