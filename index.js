@@ -67,7 +67,10 @@ passport.deserializeUser((id, done) => {
 });
 app.use(authRoutes);
 const cocktailsRoutes = require("./routes/cocktails");
+const postsRoutes = require("./routes/posts");
+
 app.use(cocktailsRoutes);
+app.use(postsRoutes);
 // app.get("/test", (req, res) => {
 //   res.send("Redirected");
 // });

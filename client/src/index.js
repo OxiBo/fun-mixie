@@ -11,10 +11,15 @@ import { Provider } from "react-redux";
 import reducer from "./reducers";
 
 // components
+
+import TestPage from "./components/TestPage";
+
 import App from "./components/App";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
+import BlogList from "./components/BlogList";
 import FavoriteCocktails from "./components/FavoriteCocktails";
+import NewPost from "./components/NewPost";
 import NotFoundPage from "./components/NotFoundPage";
 
 
@@ -34,6 +39,9 @@ ReactDOM.render(
             <Route exact path="/" component={Home} />
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/my-cocktails" component={FavoriteCocktails} />
+            <Route exact path="/blog" component={BlogList} />
+            <Route exact path="/test" component={TestPage} />
+            <Route exact path="/posts/new" component={NewPost} />
             {/* https://stackoverflow.com/questions/51457480/react-router-4-catch-all-route */}
             <Route component={NotFoundPage} />
         </Switch>

@@ -113,8 +113,12 @@ router.post("/api/email-cocktail", isLoggedIn, async (req, res) => {
     subject: `Your cocktails ${cocktail.name} details from ${brand}`,
     html: emailTemplate(cocktail),
   };
-  mailer(mailOptions);
-
-  res.send("data received");
+  try {
+    mailer(mailOptions);
+    res.send("data received");
+  } catch (err) {
+    console.log(err)
+    res.status(500).send("Server error");
+  }
 });
 module.exports = router;

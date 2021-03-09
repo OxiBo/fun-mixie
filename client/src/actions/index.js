@@ -184,13 +184,24 @@ export const fetchFavoriteCocktails = (
 };
 
 export const emailCocktail = (cocktail, email) => async (dispatch) => {
-  console.log(cocktail);
-  console.log(email);
-  const res = await axios.post('/api/email-cocktail', {cocktail, email})
-  console.log(res.data)
-  try{
+  // console.log(cocktail);
+  // console.log(email);
 
-  }catch(err){
-    console.error(err)
+  try {
+    const res = await axios.post("/api/email-cocktail", { cocktail, email });
+    console.log(res.data);
+    // TODO - dispatch an action
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const createPost = (post) => async (dispatch) => {
+  console.log(post)
+  try {
+    const newPost = await axios.post("/api/posts/new", post);
+    console.log(newPost);
+  } catch (err) {
+    console.log(err);
   }
 };

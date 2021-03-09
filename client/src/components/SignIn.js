@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useHistory, Link, Redirect } from "react-router-dom";
 import User from "./renderProps/User";
 import sprite from "../styles/img/sprite.svg";
@@ -15,7 +15,7 @@ const SignIn = () => {
             <div className="signin__container u-margin-top-bottom-big">
               <div className="signin__header">
                 <h1 className="heading-primary">
-                  Welcome to{" "}
+                  Welcome to
                   <span className="heading-primary__brand">Fun-mixie</span>
                 </h1>
               </div>

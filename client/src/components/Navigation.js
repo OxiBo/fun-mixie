@@ -17,7 +17,7 @@ const Navigation = () => {
           <nav className="header__nav-bar">
             <ul className="nav-bar__list">
               <li className="nav-bar__list-item">
-                <Link to="" className="nav-bar__list-link">
+                <Link to="/blog" className="nav-bar__list-link">
                   <svg className="nav-bar__list-icon icon-book">
                     <use href={sprite + "#icon-book2"}></use>
                   </svg>{" "}
@@ -27,12 +27,12 @@ const Navigation = () => {
               {user ? (
                 <>
                   <li className="nav-bar__list-item">
-                    <a href="#" className="nav-bar__list-link">
+                    <Link to="/posts/new" className="nav-bar__list-link">
                       <svg className="nav-bar__list-icon icon-pencil">
                         <use href={sprite + "#icon-pencil"}></use>
                       </svg>
                       create
-                    </a>
+                    </Link>
                   </li>
 
                   <li className="nav-bar__list-item">

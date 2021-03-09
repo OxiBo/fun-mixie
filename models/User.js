@@ -50,7 +50,7 @@ const userSchema = new Schema({
     },
   ],
   // cocktailId: String, // use this field for quick check if the cocktail has been added to favorites
-
+  posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
   createdAt: { type: Date, default: Date.now() },
 });
 
