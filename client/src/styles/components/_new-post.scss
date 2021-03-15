@@ -1,4 +1,37 @@
-.new__post{
-    background-color: rgb(182, 83, 83);
-    width: 100%;
+.new__post {
+  background-image: linear-gradient(
+    to left,
+    $color-primary,
+    $color-primary-secondary
+  );
+  width: 100%;
+  &-form {
+    width: 60%;
+    margin: 2rem auto;
+    background-color: $color-grey-light-3;
+    &-field {
+      padding: 2rem 2rem;
+      display: flex;
+      align-items: center;
+      :first-child {
+        flex: 0 25%;
+        font-size: 2rem;
+        text-align: right;
+        padding: 0 0.5rem;
+      }
+      &-title {
+        &-input {
+          height: 3rem;
+          border-radius: $border-radius-small;
+          outline: none;
+          border: none;
+          padding: 1rem 2rem;
+          transition: all 0.3s;
+          &:focus{
+             box-shadow: $box-shadow-tiny;
+          }
+        }
+      }
+    }
+  }
 }

@@ -133,3 +133,8 @@
     box-shadow: $box-shadow-small;
   }
 }
+
+
+.input-error{
+  border: 2px solid $color-primary-secondary!important;
+}

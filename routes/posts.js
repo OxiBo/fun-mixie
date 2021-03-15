@@ -17,11 +17,12 @@ router.get("/api/posts", async (req, res) => {
 });
 
 router.post("/api/posts/new", isLoggedIn, async (req, res) => {
-  const { image, title, body } = req.body;
+  const { image, largeImage, title, body } = req.body;
 
   try {
     const newPost = await new Post({
       image,
+      largeImage,
       title,
       body,
       author: req.user._id,

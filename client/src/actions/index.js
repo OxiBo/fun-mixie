@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import cocktaildb from "../apis/cocktailsAPI";
 import {
   parseCocktailInfo,
@@ -198,12 +199,13 @@ export const emailCocktail = (cocktail, email) => async (dispatch) => {
   }
 };
 
-export const createPost = (post) => async (dispatch) => {
+export const createPost = (post, history) => async (dispatch) => {
   console.log(post);
   try {
     const { data } = await axios.post("/api/posts/new", post);
     console.log(data);
     dispatch({ type: SINGLE_POST, payload: data });
+    history.push(`/posts/show/${data._id}`);
   } catch (err) {
     console.log(err);
     dispatch({ type: SINGLE_POST_ERROR, payload: err.data });
