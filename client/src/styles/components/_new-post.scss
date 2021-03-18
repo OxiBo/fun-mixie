@@ -13,25 +13,131 @@
       padding: 2rem 2rem;
       display: flex;
       align-items: center;
-      :first-child {
-        flex: 0 25%;
-        font-size: 2rem;
-        text-align: right;
-        padding: 0 0.5rem;
-      }
+
       &-title {
-        &-input {
-          height: 3rem;
-          border-radius: $border-radius-small;
-          outline: none;
-          border: none;
-          padding: 1rem 2rem;
-          transition: all 0.3s;
-          &:focus{
-             box-shadow: $box-shadow-tiny;
+        &-label {
+          @include flex-child(25%, 1.5rem);
+          padding-right: 2rem;
+        }
+        &-div {
+          position: relative;
+          &-button {
+            position: relative;
+            &-label {
+              position: absolute;
+              //   z-index: -1;
+              top: 10px;
+              left: 8px;
+              font-size: 17px;
+              color: #b8b8b8;
+            }
           }
+          &-input {
+            height: 3rem;
+            border-radius: $border-radius-small;
+            outline: none;
+            border: none;
+            padding: 1rem 2rem;
+            // text-align: left;
+            transition: all 0.3s;
+            &:focus {
+              background-color: $color-grey-light;
+            }
+          }
+          &-error {
+            position: absolute;
+            top: 3.5rem;
+            left: 1rem;
+          }
+        }
+      }
+      &-image {
+        &-label {
+          @include flex-child(25%, 1.5rem);
+          padding-right: 2rem;
+        }
+        &-div {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          //   width: 100%;
+
+          &-button {
+            position: relative;
+            &-input {
+              position: absolute;
+              //   z-index: -1;
+              top: -1.2rem;
+              left: 4.4rem;
+              font-size: 1.5rem;
+              color: darken($color-grey-light-1, 30);
+             max-width: 24rem;
+             @include respond(tab-port){
+                left: 4rem;
+             }
+            }
+            &-input:active,
+            &-input:focus {
+              outline: none;
+            }
+            &-label {
+              position: absolute;
+              top: -2rem;
+              left: 0;
+              display: inline-block;
+              background: $color-grey-light-2;
+              border-radius: 5px;
+              border: 1px solid $color-grey-light-1;
+              color: inherit;
+              text-align: center;
+              font-size: 1.1rem;
+              padding: .8rem;
+              width: 14rem;
+              transition: all 0.5s;
+              cursor: pointer;
+              // margin: 5px;
+              z-index: 10;
+            
+            }
+           
+          }
+        }
+      }
+      &-body {
+        &-label {
+          @include flex-child(25%, 1.5rem);
+          padding-right: 2rem;
         }
       }
     }
   }
 }
+
+// input[type="file"] {
+//     position: absolute;
+//     z-index: -1;
+//     top: 15px;
+//     left: 20px;
+//     font-size: 17px;
+//     color: #b8b8b8;
+//   }
+//   .button-wrap {
+//     position: relative;
+//   }
+//   .button {
+//     display: inline-block;
+//     background-color: #1d6355;
+//     border-radius: 10px;
+//     border: 4px double #cccccc;
+//     color: #ffffff;
+//     text-align: center;
+//     font-size: 20px;
+//     padding: 8px;
+//     width: 100px;
+//     transition: all 0.5s;
+//     cursor: pointer;
+//     margin: 5px;
+//   }
+//   .button:hover {
+//     background-color: #00ab97;
+//   }

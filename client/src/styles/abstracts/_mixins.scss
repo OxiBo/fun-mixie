@@ -53,3 +53,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
     clear: both;
   }
 }
+
+
+
+@mixin flex-child ($basis, $font-size){
+  flex: 0 $basis;
+  font-size: $font-size;
+  text-align: right;
+  // padding: 0 0.5rem;
+}

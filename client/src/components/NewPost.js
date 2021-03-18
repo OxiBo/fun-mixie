@@ -84,19 +84,23 @@ const NewPost = () => {
               >
                 Title
               </label>
-              <input
-                className={`new__post-form-field-title-input ${
-                  errors.title ? "input-error" : ""
-                }`}
-                type="text"
-                name="title"
-                id="title"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.title}
-                autocomplete="off"
-              />
-              {errors.title && touched.title && errors.title}
+              <div className="new__post-form-field-title-div">
+                <input
+                  className={`new__post-form-field-title-div-input ${
+                    errors.title ? "input-error" : ""
+                  }`}
+                  type="text"
+                  name="title"
+                  id="title"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.title}
+                  autocomplete="off"
+                />
+                <p className="new__post-form-field-title-div-error">
+                  {errors.title && touched.title && errors.title}
+                </p>
+              </div>
             </div>
 
             <div className="new__post-form-field new__post-form-field-image">
@@ -106,22 +110,39 @@ const NewPost = () => {
               >
                 Image
               </label>
-              <input
-                type="file"
-                name="image"
-                id="image"
-                placeholder="Upload an image"
-                onChange={(e) => handleImageUpload(e, setFieldValue)}
-                onBlur={handleBlur}
-                className="new__post-form-field-image-input"
-              />
-              {values.image && (
-                <img width="150" src={values.image} alt="Upload Preview" />
-              )}
-            </div>
 
+              <div className="new__post-form-field-image-div">
+                <div class="new__post-form-field-image-div-button">
+                  <label
+                    class="new__post-form-field-image-div-button-label"
+                    for="upload"
+                  >
+                    Upload File
+                  </label>
+                  <input
+                    id="upload"
+                    type="file"
+                    className="new__post-form-field-image-div-button-input"
+                  />
+                </div>
+                
+
+                {/* <input
+                  type="file"
+                  name="image"
+                  id="image"
+                  placeholder="Upload an image"
+                  onChange={(e) => handleImageUpload(e, setFieldValue)}
+                  onBlur={handleBlur}
+                  className="new__post-form-field-image-input"
+                /> */}
+                {values.image && (
+                  <img width="150" src={values.image} alt="Upload Preview" />
+                )}
+              </div>
+            </div>
             <div className="new__post-form-field new__post-form-field-body">
-              <label htmlFor="body" className="new__post-form-body-label">
+              <label htmlFor="body" className="new__post-form-field-body-label">
                 Your post
               </label>
               <textarea
@@ -138,6 +159,7 @@ const NewPost = () => {
             <button type="submit" disabled={isSubmitting}>
               Submit
             </button>
+           
           </form>
         )}
       </Formik>
@@ -168,6 +190,10 @@ const NewPost = () => {
           Submit
         </button>
       </form> */}
+
+
+    
+
     </div>
   );
 };
