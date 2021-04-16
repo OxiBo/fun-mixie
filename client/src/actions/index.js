@@ -22,6 +22,8 @@ import {
   FETCH_FAVE_COCKTAILS_ERROR,
   SINGLE_POST,
   SINGLE_POST_ERROR,
+  FETCH_POSTS,
+  FETCH_POSTS_ERROR,
 } from "./types";
 
 export const fetchUser = () => async (dispatch) => {
@@ -220,5 +222,18 @@ export const fetchPost = (id) => async (dispatch) => {
   } catch (err) {
     console.log(err);
     dispatch({ type: SINGLE_POST_ERROR, payload: err.data });
+  }
+};
+
+export const fetchPosts = (page, postsPerPage) => async (dispatch) => {
+  try {
+    const { data } = await axios.get(
+      `/api/posts/?page=${page}&size=${postsPerPage}`
+    );
+    console.log(data);
+    dispatch({ type: FETCH_POSTS, payload: data });
+  } catch (err) {
+    console.log(err);
+    dispatch({ type: FETCH_POSTS_ERROR, payload: err.data });
   }
 };

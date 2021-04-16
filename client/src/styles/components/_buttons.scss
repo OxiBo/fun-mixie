@@ -1,4 +1,4 @@
-.btn{
+.btn {
   border: none;
   display: flex;
   justify-content: center;
@@ -21,40 +21,68 @@
   }
 }
 
+.btn-default-background{
+  background-image: linear-gradient(
+    to left,
+    $color-primary-secondary,
+    $color-primary-light
+  );
+}
+
 .btn-small,
 .btn-small:link,
 .btn-small:visited {
-width: 7rem;
-height: 2.5rem;
-color: $color-white!important;
-font-size: 1rem;
-letter-spacing: 1px;
-padding: 1rem;
-background-image: linear-gradient(to right, $color-primary-secondary, $color-primary-light);
-&:hover {
-  box-shadow: $box-shadow-medium;
-}
+  width: 7rem;
+  height: 2.5rem;
+  color: $color-white !important;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  padding: 1rem;
+  // background-image: linear-gradient(
+  //   to right,
+  //   $color-primary-secondary,
+  //   $color-primary-light
+  // );
+  &:hover {
+    box-shadow: $box-shadow-medium;
+  }
 
-&:active,
+  &:active,
   &:focus {
     outline: none;
     transform: translateY(1px);
     box-shadow: $box-shadow-tiny;
   }
-
 }
 
-
+.btn-medium,
+.btn-medium:link,
+.btn-medium:visited {
+  width: 15rem;
+  height: 3.5rem;
+  color: $color-white !important;
+  font-size: 1.2rem;
+  letter-spacing: 1.2px;
+  padding: 1.5rem;
+  // background-image: linear-gradient(
+  //   to right,
+  //   $color-primary-secondary,
+  //   $color-primary-light
+  // );
+  &:hover {
+    box-shadow: $box-shadow-medium;
+  }
+}
 
 .btn-big,
 .btn-big:link,
 .btn-big:visited {
   width: 34rem;
- max-width: 34rem;
+  max-width: 34rem;
   height: 5rem;
   // border: none;
   margin: 1rem;
-//   background-color: wheat;
+  //   background-color: wheat;
   // display: flex;
   // justify-content: center;
   // align-items: center;
@@ -81,7 +109,7 @@ background-image: linear-gradient(to right, $color-primary-secondary, $color-pri
 }
 
 .btn-social {
-  color: $color-white!important;
+  color: $color-white !important;
 }
 .btn-facebook {
   background-color: #3b5998;
@@ -103,15 +131,22 @@ background-image: linear-gradient(to right, $color-primary-secondary, $color-pri
   background-color: #00acee;
 }
 
-
-.btn-danger{
-    background-image: linear-gradient(to right, $color-primary-secondary, $color-primary-light);
-    color: $color-white!important;
-    text-transform: uppercase;
+.btn-danger {
+  background: $color-danger;
+  color: $color-white !important;
+  text-transform: uppercase;
 }
-
 
 .btn-options {
   border: none;
   height: 2rem;
+}
+
+
+.btn-go{
+   background-image: linear-gradient(
+    to right,
+    $color-primary-secondary,
+    $color-grey-dark
+  );
 }

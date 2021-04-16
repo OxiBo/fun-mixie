@@ -1,10 +1,12 @@
+//TODO - fix - when the last cocktail in the list gets deleted, it shows empty last page with wrong page numbers
+
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Pagination from "./Pagination";
-import Spinner from "./Spinner";
 import ErrorMessage from "./ErrorMessage";
+import Spinner from "./Spinner";
 import useFetchData from "./customHooks/useFetchData";
 
 import { fetchFavoriteCocktails } from "../actions";
@@ -15,22 +17,26 @@ import {
 } from "./selectors/cocktails";
 import FaveCocktailItem from "./FaveCocktailItem";
 
+import { selectUser } from "./selectors/auth";
+
 const FavoriteCocktails = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
 
-  const user = useSelector(({ auth }) => auth.user);
+  const { user } = useSelector(selectUser);
 
-  const [faveCocktails, setFaveCocktails] = useState([]);
+  const [faveCocktailsTotal, setFaveCocktailsTotal] = useState([]);
+
+  // watches the amount of user favorite cocktails. If a cocktail is removed, the page will be updated and the deleted item will be removed from the list
   useEffect(() => {
     if (user) {
-      setFaveCocktails(user.cocktails);
+      setFaveCocktailsTotal(user.cocktails.length);
     }
   }, [user]);
 
   useEffect(() => {
     dispatch(fetchFavoriteCocktails(page, perPageFaveCocktails));
-  }, [dispatch, page, faveCocktails.length]);
+  }, [dispatch, page, faveCocktailsTotal]);
 
   const { data, error, loading } = useFetchData(
     selectFaveCocktails,

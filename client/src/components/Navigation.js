@@ -17,7 +17,7 @@ const Navigation = () => {
           <nav className="header__nav-bar">
             <ul className="nav-bar__list">
               <li className="nav-bar__list-item">
-                <Link to="/blog" className="nav-bar__list-link">
+                <Link to="/posts" className="nav-bar__list-link">
                   <svg className="nav-bar__list-icon icon-book">
                     <use href={sprite + "#icon-book2"}></use>
                   </svg>{" "}

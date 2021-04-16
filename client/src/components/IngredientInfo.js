@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useRef, useEffect } from "react";
+
 
 // svg icons
 import sprite from "../styles/img/sprite.svg";
@@ -11,7 +11,7 @@ import useFetchData from "./customHooks/useFetchData";
 import ButtonClear from "./ButtonClear";
 
 const IngredientInfo = () => {
-  const dispatch = useDispatch();
+ 
   const [popup, setPopupOpen] = useState(false);
   const ref = useRef();
 
@@ -26,6 +26,9 @@ const IngredientInfo = () => {
     }
   };
 
+  useEffect(() => {
+   console.log(data)
+  }, [data])
   const renderIngredientInfo = () => {
     const { id, alcohol, description, name, type } = data;
     return (
@@ -111,14 +114,7 @@ const IngredientInfo = () => {
             </p>
           </div>
         </div>
-        {/* <button
-          className="ingredient__info-btn-clear"
-          onClick={() => { 
-            console.log(clearIngredient);
-            dispatch(clearIngredient())}}
-        >
-          clear
-        </button> */}
+     
         <ButtonClear action={clearIngredient} />
       </>
     );
@@ -132,7 +128,7 @@ const IngredientInfo = () => {
         <div className="ingredient__info-error error">
           <p className="error-message">{error}</p>
         </div>
-      ) : Object.entries(data).length ? (
+      ) : data && Object.entries(data).length ? (
         renderIngredientInfo()
       ) : (
         false

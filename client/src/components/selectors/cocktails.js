@@ -17,6 +17,7 @@ export const selectFaveCocktailsError = ({ cocktails }) =>
   cocktails.faveCocktailsError;
 
 export const selectIngredient = ({ cocktails }) => {
+  // console.log(cocktails)
   return cocktails.ingredient;
 };
 

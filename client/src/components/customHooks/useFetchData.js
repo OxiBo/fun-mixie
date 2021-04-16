@@ -12,16 +12,19 @@ const useFetchData = (selectorData, selectorError) => {
   useEffect(() => {
     const setState = async () => {
       await setLoading(true);
-      await setData(fetchData);
-      await setError(fetchError);
-      
-      if (data || error) {
+      if (fetchData || fetchError) {
         await setLoading(false);
       }
+      await setData(fetchData);
+      await setError(fetchError);
+    
     };
     setState();
-  }, [fetchData, fetchError, data, error]);
+  }, [fetchData, fetchError]);
 
+  // console.log(loading)
+  // console.log(error)
+  // console.log(data)
   return { data, error, loading };
 };
 

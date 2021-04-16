@@ -58,8 +58,8 @@ router.get("/api/user-cocktails", isLoggedIn, async (req, res) => {
   const { page, size } = req.query;
   const startIndex = size * page - size;
   console.log(startIndex);
-  const allCocktails = await User.findById(req.user._id);
-  console.log(allCocktails.cocktails);
+  // const allCocktails = await User.findById(req.user._id);
+  // console.log(allCocktails.cocktails);
   try {
     const result = await User.aggregate([
       { $match: { _id: req.user._id } },

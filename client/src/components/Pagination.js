@@ -19,7 +19,7 @@ const Pagination = ({ perPage, total, onPageChange }) => {
   return (
     <div className="pagination">
       <button
-        className="btn btn-small pagination__button pagination__button-prev"
+        className="btn btn-default-background btn-small pagination__button pagination__button-prev"
         onClick={handlePrev}
         disabled={page <= 1}
       >
@@ -33,7 +33,7 @@ const Pagination = ({ perPage, total, onPageChange }) => {
         {page} of {pageCount}
       </span>{" "}
       <button
-        className="btn btn-small pagination__button pagination__button-next"
+        className="btn btn-default-background btn-small pagination__button pagination__button-next"
         onClick={handleNext}
         disabled={page >= pageCount}
       >

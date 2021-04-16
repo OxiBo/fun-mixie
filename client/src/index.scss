@@ -22,20 +22,11 @@
 @import "./styles/components/pagination";
 @import "./styles/components/liked";
 @import "./styles/components/fave-cocktails-list";
-@import "./styles/components/blog-list";
+@import "./styles/components/posts-list";
 @import "./styles/components/new-post";
+@import "./styles/components/single-post";
+
 @import "./styles/components/not-found";
 
 
 
-
-.test{
-    background-color: rgb(224, 187, 187);
-    width: 100%;
-    &-heading{
-        font-size: 5rem;
-        margin: 6rem;
-        padding: 4rem;
-        text-align: center;
-    }
-}

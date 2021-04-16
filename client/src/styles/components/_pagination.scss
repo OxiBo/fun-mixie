@@ -35,13 +35,18 @@
     box-shadow: $box-shadow-small;
   }
   &__button-prev {
+    // background-image: linear-gradient(
+    //   to left,
+    //   $color-primary-secondary,
+    //   $color-primary-light
+    // );
   }
   &__button-next {
-    background-image: linear-gradient(
-      to left,
-      $color-primary-secondary,
-      $color-primary-light
-    );
+    // background-image: linear-gradient(
+    //   to left,
+    //   $color-primary-secondary,
+    //   $color-primary-light
+    // );
   }
   &__icon {
     width: 1.2rem;

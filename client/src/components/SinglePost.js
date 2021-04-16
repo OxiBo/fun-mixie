@@ -13,12 +13,12 @@ const SinglePost = () => {
     dispatch(fetchPost(postId));
   }, []);
 
-  const data = useFetchData(selectSinglePost, selectSinglePostError);
+  const { data, error } = useFetchData(selectSinglePost, selectSinglePostError);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-  return <div>single post</div>;
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
+  return <div className="post">{data &&  data.title}</div>;
 };
 
 export default SinglePost;

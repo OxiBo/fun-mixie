@@ -39,6 +39,7 @@ const CocktailsList = () => {
   };
 
   const renderCocktailsList = () => {
+    console.log(currentCocktails)
     const cocktails = currentCocktails.map((cocktail) => {
     
       return (
@@ -60,7 +61,7 @@ const CocktailsList = () => {
           <div className="cocktails__list-error error">
             <p classList="error-message">{error}</p>
           </div>
-        ) : data.length > 0 ? (
+        ) : data && data.length > 0 ? (
           <>
             {renderCocktailsList()}
             {data.length > perPage && (
