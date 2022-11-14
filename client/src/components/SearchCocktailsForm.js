@@ -1,5 +1,5 @@
 import React, { useRef, useState, useContext } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { searchCocktails } from "../actions";
 import useOutsideClick from "./customHooks/useOutsideClick";
@@ -36,12 +36,12 @@ const SearchCocktailsForm = () => {
           if (query.trim()) {
             await dispatch(searchCocktails(query, searchBy));
             await setQuery("");
-            await setSuggestions([]);//???
+            await setSuggestions([]); //???
             setSubmitError(false);
           } else {
             setSubmitError(true);
           }
-history.push('/')
+          history.push("/");
         }}
       >
         <input

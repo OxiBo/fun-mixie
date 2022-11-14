@@ -7,7 +7,6 @@ const Pagination = ({ perPage, total, onPageChange }) => {
   const [page, setPage] = useState(1);
   const pageCount = Math.ceil(total / perPage);
 
-
   const handlePrev = () => {
     setPage(page - 1);
     onPageChange(page - 1);

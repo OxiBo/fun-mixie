@@ -11,6 +11,8 @@
   flex-direction: column;
   //   justify-content: center;
   &-figure {
+    min-width: 40%;
+    min-height: 40%; 
     position: relative;
     display: flex;
     justify-content: center;

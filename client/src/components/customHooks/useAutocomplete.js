@@ -17,7 +17,8 @@ const useAutocomplete = (query, searchBy) => {
   }, [searchBy]);
 
   const searchSuggestions = useSelector((state) => state.cocktails.typeAhead);
-  const ifIncludesQuery = query
+  
+  const ifIncludesQuery = query.trim() !== ""
     ? searchSuggestions
         .map((item) => item.toLowerCase())
         .includes(query.toLowerCase())

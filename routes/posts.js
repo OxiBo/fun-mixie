@@ -8,12 +8,11 @@ const express = require("express"),
 router.get("/api/posts", async (req, res) => {
   const { page, size } = req.query;
 
-  console.log(page, size);
   try {
     const [posts] = await Post.aggregate([
       {
         $facet: {
-          paginatedResults: [{ $skip: page * size }, { $limit: Number(size) }],
+          paginatedResults: [{ $skip: page * size - size}, { $limit: Number(size) }],
           totalCount: [
             {
               $count: "count",
@@ -23,8 +22,9 @@ router.get("/api/posts", async (req, res) => {
       },
     ]);
 
-    // console.log(posts);
+    console.log(posts);
     const { paginatedResults, totalCount } = posts;
+    // console.log(paginatedResults)
     res.send({ posts: paginatedResults, totalCount: totalCount[0].count });
   } catch (err) {
     console.log(err);

@@ -1,35 +1,10 @@
-.posts__list {
+.posts {
   background-color: $color-grey-light-3;
-  background: -webkit-gradient(
-      linear,
-      0 0,
-      0 100%,
-      from(#d9eaf3),
-      color-stop(4%, #fff)
-    )
-    0 4px;
-  background-size: 100% 3rem;
-  position: relative;
+  
+  
   line-height: 3rem;
   width: 100%;
-  &:before {
-    content: "";
-    position: absolute;
-    width: 4px;
-    top: 0;
-    left: 30px;
-    bottom: 0;
-    border: 1px solid;
-    border-color: transparent #efe4e4;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    width: 4px;
-    top: 0;
-    right: 30px;
-    bottom: 0;
-    border: 1px solid;
-    border-color: transparent #efe4e4;
+  &__list{
+    list-style: none;
   }
 }

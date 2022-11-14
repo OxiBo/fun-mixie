@@ -12,3 +12,6 @@ const ButtonClear = ({ action }) => {
 };
 
 export default ButtonClear;
+
+
+

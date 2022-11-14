@@ -7,6 +7,7 @@ import { fetchPosts } from "../actions";
 import Pagination from "./Pagination";
 import Spinner from "./Spinner";
 import ErrorMessage from "./ErrorMessage";
+import PostItem from "./PostItem";
 
 import {
   selectPosts,
@@ -31,12 +32,7 @@ const PostList = () => {
   const { data, error, loading } = useFetchData(selectPosts, selectPostsError);
 
   const renderPosts = () => {
-    return data.map((post) => (
-      <li key={post._id}>
-        <h2>{post.title}</h2>
-        <p>{post.body}</p>
-      </li>
-    ));
+    return data.map((post) => <PostItem key={post._id} post={post} />);
   };
 
   const {
@@ -46,20 +42,26 @@ const PostList = () => {
   } = useFetchData(selectPostsTotal, selectPostsError);
   console.log(postsTotal);
   return (
-    <div className="posts__list">
+    <div className="posts">
       {loading ? (
         <Spinner />
       ) : error ? (
         <ErrorMessage error={error} />
       ) : (
-        data && data.length && <ul>{renderPosts()}</ul>
+        data &&
+        data.length > 0 && (
+          <>
+            <ul className="posts__list">{renderPosts()}</ul>
+          </>
+        )
       )}
-
-      <Pagination
-        perPage={postsPerPage}
-        total={postsTotal} // {data && data.total} //data.total
-        onPageChange={onPageChange}
-      />
+      {data && data.length > 0 && (
+        <Pagination
+          perPage={postsPerPage}
+          total={postsTotal} // {data && data.total} //data.total
+          onPageChange={onPageChange}
+        />
+      )}
     </div>
   );
 };

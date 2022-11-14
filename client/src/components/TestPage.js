@@ -1,36 +1,67 @@
-import React, { useRef } from "react";
+import React, { useRef } from 'react';
+import axios from 'axios';
+import useSWR from 'swr';
+import useForm from './customHooks/useForm';
 
 const TestPage = () => {
-  const containerRef = useRef();
-  const h2Ref = useRef();
-  const walk = 100; // 100px
-  const shadow = (e) => {
-    // console.log(e.target);
+  const { inputs, handleChange } = useForm({
+    name: 'John Doe',
+    age: 18,
+    file: '',
+  });
 
-    // const { offsetWidth: width, offsetHeight: height } = containerRef.current;
-    // console.log(width);
-    // console.log(e.target.offsetLeft);
-    // console.log(containerRef.current)
-    const { offsetWidth: width, offsetHeight: height } = containerRef.current;
-    let { offsetX: x, offsetY: y } = e;
-    if (containerRef.current !== e.target) {
-      x = x + e.target.offsetLeft;
-      y = y + e.target.offsetTop;
-    }
-    const xWalk = Math.round((x / width) * walk - walk / 2);
-    const yWalk = Math.round((y / height) * walk - walk / 2);
-    console.log( h2Ref.current.style)
-    h2Ref.current.style.textShadow = "red"//`${xWalk}px ${yWalk}px 0 red`;
-    console.log(h2Ref.current.style)
-  };
+  const fetcher = (url) => axios.get(url).then((res) => res.data);
+
+  const { data, error } = useSWR(
+    'https://jsonplaceholder.typicode.com/users',
+    fetcher
+  );
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
 
   return (
-    <div ref={containerRef} className="test" onMouseMove={shadow}>
-      <h2 ref={h2Ref} className="test-heading">
-        HEADING
-      </h2>
+    <div className="test">
+      <form
+        action=""
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log(inputs);
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Enter your name"
+          id="name"
+          name="name"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          placeholder="Enter your age"
+          id="age"
+          name="age"
+          onChange={handleChange}
+        />
+        <input
+          type="file"
+          placeholder="Enter your age"
+          id="file"
+          name="file"
+          onChange={handleChange}
+        />
+        <button type="submit">Submit</button>
+      </form>
+
+      <div>
+        <h3>hello DATA</h3>
+
+        {data.map((item) => (
+          <p>{item.name}</p>
+        ))}
+      </div>
     </div>
-  );
+  )
 };
 
 export default TestPage;

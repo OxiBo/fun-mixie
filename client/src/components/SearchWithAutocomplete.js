@@ -34,6 +34,7 @@ const Search = () => {
   useEffect(() => {
     setSuggestions(searchSuggestions.slice(0, 10));
     // console.log(suggestions)
+    
     if (searchSuggestions.length >= 1) setSuggestionsBoxOpen(true);
   }, [searchSuggestions]);
 
