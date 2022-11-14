@@ -19,6 +19,7 @@ const mailer = async (mailOptions) => {
     const res = await transporter.sendMail(mailOptions);
     console.log("Email sent: " + res.response);
   } catch (err) {
+    console.log('========')
     console.log(err);
   }
 };
