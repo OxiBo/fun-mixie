@@ -4,6 +4,10 @@
   justify-content: center;
   align-items: center;
   z-index: 20;
+  @include respond(smallPhone){
+    flex: 0 0 100%;
+    //background-color: blue;
+  }
   &__input {
     font-family: inherit;
     font-size: 1.5rem;
@@ -19,6 +23,11 @@
     @include respond(phone) {
       padding: 0.7rem 2rem;
       box-shadow: none;
+      text-align: center;
+    }
+    @include respond(smallPhone) {
+      flex: 0 0 95%; // TODO - need to adjust for galaxy-fod
+      //background-color: purple;
     }
     &:focus {
       outline: none;

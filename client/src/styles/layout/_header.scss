@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   // background: yellow;
- 
+
   @include respond(phone) {
     flex-wrap: wrap;
     height: auto;
@@ -17,13 +17,14 @@
   }
 
   @include respond(tab-port) {
-  flex-wrap: wrap;
-  height: auto;
-  margin: 0rem auto;
+    flex-wrap: wrap;
+    height: auto;
+    margin: 0rem auto;
   }
 
   &__search {
-    margin: 0 1.5rem 1rem 0;
+    //margin: 0 1.5rem 1rem 0;
+    margin: 1rem 1.5rem 1rem 0;
     flex: 0 0 40%;
     position: relative;
     > * {
@@ -31,24 +32,41 @@
       display: flex;
       align-items: center;
     }
+
+    @include respond(tab-port) {
+      
+      order: 1;
+      //background-color: yellow;
+    }
     @include respond(phone) {
       flex: 0 100%;
       order: 1;
       margin: 0rem 0rem;
       padding: 1rem 2rem;
       background-color: $color-grey-light;
+      //background-color: green;
     }
-    @include respond(tab-port) {
-      order: 1;
+    @include respond(smallPhone) {
+      padding: 1rem 0rem;
+      background-color: $color-grey-light;
+      //background-color: magenta;
     }
     &-1 {
       // flex: 0 0 45%;
-
       // display: flex;
       // align-items: center;
       justify-content: space-between;
+
+      // @include respond(smallPhone) {
+      //   width: 35rem;
+      //   background-color: red;
+      // }
       @include respond(tab-port) {
-     width: 50rem;
+        width: 50rem;
+      }
+      @include respond(smallPhone) {
+        width: 32rem;
+        margin: 0 auto;
       }
       &-options-float-span {
         opacity: 0;
@@ -148,7 +166,7 @@
     align-self: stretch;
     display: flex;
     align-items: stretch;
-    margin: 0 auto  0 4rem;
+    margin: 0 auto 0 4rem;
     padding: 1rem;
     &__link {
       text-decoration: none;

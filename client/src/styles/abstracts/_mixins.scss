@@ -10,6 +10,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
 1em = 16px
 */
 @mixin respond($breakpoint) {
+  @if $breakpoint == smallPhone {
+    @media only screen and (max-width: 31.25em) {
+      @content;
+    } //500px   --- 600 / 16 = 31.25
+  }
   @if $breakpoint == phone {
     @media only screen and (max-width: 37.5em) {
       @content;
@@ -44,19 +49,15 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 }
 
-
-
 @mixin clearfix {
   &::after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
 }
 
-
-
-@mixin flex-child ($basis, $font-size){
+@mixin flex-child($basis, $font-size) {
   flex: 0 $basis;
   font-size: $font-size;
   text-align: right;

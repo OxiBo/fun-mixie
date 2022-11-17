@@ -1,11 +1,11 @@
 // https://www.udemy.com/course/node-with-react-fullstack-web-development/learn/lecture/12072146#content
 
-const proxy = require("http-proxy-middleware");
+const proxy = require('http-proxy-middleware');
 
 module.exports = (app) => {
   app.use(
-    proxy(["/api", "/auth/facebook", "/auth/twitter"], {
-      target: "http://localhost:4070",
+    proxy(['/api', '/auth/facebook', '/auth/twitter', '/auth/instagram'], {
+      target: 'http://localhost:4070',
     }) // server localhost port
   );
 };

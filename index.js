@@ -1,13 +1,13 @@
-const express = require("express"),
+const express = require('express'),
   //   keys = require("./config/keys"),
-  cors = require("cors"),
-  bodyParser = require("body-parser"),
-  cookieSession = require("cookie-session"),
-  mongoose = require("mongoose"),
-  passport = require("passport"),
-  path = require("path"),
-  keys = require("./config/keys"),
-  authRoutes = require("./routes/auth"),
+  cors = require('cors'),
+  bodyParser = require('body-parser'),
+  cookieSession = require('cookie-session'),
+  mongoose = require('mongoose'),
+  passport = require('passport'),
+  path = require('path'),
+  keys = require('./config/keys'),
+  authRoutes = require('./routes/auth'),
   app = express();
 
 // have to require the model before requiring passport
@@ -15,17 +15,17 @@ const express = require("express"),
 // register model
 // const User = mongoose.model("user");
 
-const User = require("./models/User");
-require("./services/passportFacebookAuth");
-require("./services/passportTwitterAuth");
+const User = require('./models/User');
+require('./services/passportFacebookAuth');
+require('./services/passportTwitterAuth');
 
 app.use(cors()); // CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options. ; https://en.wikipedia.org/wiki/Cross-origin_resource_sharing   , https://www.udemy.com/course/node-with-react-fullstack-web-development/learn/lecture/7605040?start=667#bookmarks
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + '/public'));
 app.use(
   cookieSession({
-    name: "fun-mixie-session",
+    name: 'fun-mixie-session',
     keys: [keys.cookieKey],
     maxAge: 7 * 24 * 60 * 60 * 1000, // a week
   })
@@ -38,19 +38,20 @@ try {
     useNewUrlParser: true,
     useFindAndModify: false,
   });
-  console.log("Fun-mixie connected to DB!");
+  console.log('Fun-mixie connected to DB!');
 } catch (err) {
-  console.log("ERROR:", err.message);
+  console.log('ERROR:', err.message);
 }
-
 
 app.use(passport.initialize()); // has to be before requiring auth routes
 app.use(passport.session()); // has to be before requiring auth routes
 
-const facebookAuthRoute = require("./routes/authFacebook");
-const twitterAuthRoute = require("./routes/authTwitter");
+const facebookAuthRoute = require('./routes/authFacebook');
+const twitterAuthRoute = require('./routes/authTwitter');
+//const instagramAuthRoute = require('./routes/authInstagram');
 app.use(facebookAuthRoute);
 app.use(twitterAuthRoute);
+//app.use(instagramAuthRoute);
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -62,12 +63,12 @@ passport.deserializeUser((id, done) => {
       done(err, user);
     });
   } catch (err) {
-    done(new Error("Failed to deserialize user"));
+    done(new Error('Failed to deserialize user'));
   }
 });
 app.use(authRoutes);
-const cocktailsRoutes = require("./routes/cocktails");
-const postsRoutes = require("./routes/posts");
+const cocktailsRoutes = require('./routes/cocktails');
+const postsRoutes = require('./routes/posts');
 
 app.use(cocktailsRoutes);
 app.use(postsRoutes);
@@ -75,14 +76,14 @@ app.use(postsRoutes);
 //   res.send("Redirected");
 // });
 // this has to be after all possible rotes!!!
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   // Express will serve production assets like main.css  or main.js files
-  app.use(express.static("client/build"));
+  app.use(express.static('client/build'));
 
   // Express will serve index.html if it does not recognize the route
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 

@@ -1,6 +1,5 @@
 .container {
   min-height: 100vh;
-
   color: $color-primary;
   background-image: linear-gradient(
     to bottom right,
@@ -11,5 +10,4 @@
   box-sizing: cover;
   display: flex;
   flex-direction: column;
-
 }
