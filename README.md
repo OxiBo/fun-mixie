@@ -6,7 +6,13 @@
 
 ## Overview
 
-Cocktail App is a web application designed to help users find cocktail recipes, save their favorite recipes, get information about ingredients, email chosen recipes, and set up authentication via social network providers.
+Cocktail App is a web application designed to help users find and explore cocktail recipes. With this app, users can:
+
+- **Search for Recipes:** Easily find a wide variety of cocktail recipes.
+- **Save Favorites:** Save their favorite recipes to a personalized list.
+- **Get Ingredient Information:** Access detailed information about ingredients used in the recipes.
+- **Email Recipes:** Share their favorite recipes with friends via email.
+- **Sign In with Social Media:** Securely log in using Facebook, Instagram, or Twitter for a seamless experience.
 
 ## Technologies Used
 
@@ -37,14 +43,42 @@ To get started with the Cocktail App, follow these steps:
     ```sh
     npm install
     ```
+    
 
-3. **Set up environment variables:**
+   3. **Set up environment variables:**
 
-    Create a `.env` file in the root directory and add the necessary environment variables.
+   Create two files in the `/config` folder: `dev.js` and `prod.js`. These files should contain the necessary environment variables for development and production environments, respectively.
 
-    ```env
-    MONGO_URI=your_mongodb_uri
-    SECRET_KEY=your_secret_key
+    Example `dev.js`:
+    ```js
+    // dev.js - Don't commit this
+    module.exports = {
+      facebookAPIId: 'your_facebook_api_id',
+      facebookAPISecret: 'your_facebook_api_secret',
+      facebookCallBackURL: 'http://localhost:4070/auth/facebook/callback',
+      twitterConsumerKey: 'your_twitter_consumer_key',
+      twitterConsumerSecret: 'your_twitter_consumer_secret',
+      instagramClientID: 'your_instagram_client_id',
+      instagramClientSecret: 'your_instagram_client_secret',
+      instagramCallBackURL: 'http://localhost:4070/auth/instagram/callback',
+      mongoURI: 'your_development_mongodb_uri',
+      cookieKey: 'your_development_cookie_key',
+      nodemailerUser: 'your_nodemailer_user',
+      nodemailerPass: 'your_nodemailer_pass',
+      redirectDomain: 'http://localhost:4007',
+    };
+    ```
+
+    Additionally, create a `keys.js` file in the `/config` folder to determine which set of credentials to use based on the environment:
+
+    ```js
+    if (process.env.NODE_ENV === "production") {
+      // we are in production
+      module.exports = require("./prod");
+    } else {
+      // we are in development
+      module.exports = require("./dev");
+    }
     ```
 
 4. **Run the application:**
@@ -89,28 +123,6 @@ To get started with the Cocktail App, follow these steps:
 4. **Email Recipes:** Use the email feature to share recipes with others.
 5. **Authentication:** Sign up or log in using your social network accounts.
 
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Open a Pull Request.
-
-## License
-
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For any questions or suggestions, feel free to contact me at [your-email@example.com](mailto:your-email@example.com).
-
-## Acknowledgments
-
-- Thanks to all the contributors who helped make this project better.
-- Special thanks to the open-source community for their support and contributions.
 
 ---
 
