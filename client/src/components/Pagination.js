@@ -4,7 +4,7 @@ import React, { useState} from "react";
 import sprite from "../styles/img/sprite.svg";
 
 const Pagination = ({ perPage, total, onPageChange }) => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1); // should be currentPage that is passed from parent component
   const pageCount = Math.ceil(total / perPage);
 
   const handlePrev = () => {
