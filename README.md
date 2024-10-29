@@ -48,7 +48,7 @@ To get started with the Cocktail App, follow these steps:
     ```
     
 
-   3. **Set up environment variables:**
+3. **Set up environment variables:**
 
    Create two files in the `/config` folder: `dev.js` and `prod.js`. These files should contain the necessary environment variables for development and production environments, respectively.
 
