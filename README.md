@@ -90,7 +90,7 @@ To get started with the Cocktail App, follow these steps:
     npm run dev
     ```
 
-    The application should now be running on `http://localhost:3000`.
+    The application should now be running on `http://localhost:4007`.
 
 ## Scripts
 
