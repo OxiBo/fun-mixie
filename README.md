@@ -41,7 +41,10 @@ To get started with the Cocktail App, follow these steps:
 2. **Install dependencies:**
 
     ```sh
+    npm install 
+    cd client
     npm install
+    cd ..
     ```
     
 
